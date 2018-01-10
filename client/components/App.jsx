@@ -3,6 +3,7 @@
 */
 import React from 'react';
 import CodeWarsData from './API.jsx';
+//import CodeSchoolData from './API.jsx';
 
 class App extends React.Component {
   render() {
@@ -10,7 +11,10 @@ class App extends React.Component {
      <div style={{textAlign: 'center'}}>
         <h1>Intern Pack</h1>
          <CodeWarsData username = "Amrit2" />
+
       </div>);
   }
 }
 export default App;
+
+//<CodeSchoolData user = "AmritK2"/>
