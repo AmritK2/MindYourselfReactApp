@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
      <div style={{textAlign: 'center'}}>
         <h1>Intern Pack</h1>
-         <CodeWarsData username = "jdvb " />
+         <CodeWarsData username = "Amrit2" />
       </div>);
   }
 }
