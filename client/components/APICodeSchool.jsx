@@ -43,3 +43,5 @@ export default class CodeSchoolData extends React.Component {
         )
     }
 }
+
+//<h2>Courses: {this.state.codeSchoolData.courses}</h2>

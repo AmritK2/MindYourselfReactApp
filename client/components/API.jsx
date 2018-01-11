@@ -38,7 +38,7 @@ export default class CodeWarsData extends React.Component{
         if (this.state.requestFailed) return <p>FAILED</p>;
         return(
             <div>
-                <h1>CodeWars</h1>
+                <h1>Code Wars</h1>
               <h2>Name: {this.state.codeWarsData.name}</h2>
                 <h2>Challenges Completed: {this.state.codeWarsData.codeChallenges.totalCompleted}</h2>
 

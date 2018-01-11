@@ -1,6 +1,7 @@
 import React from 'react';
 
-const urlGithubData = user => `https://api.github.com/users/${user}`;
+const urlGithubUser = user => `https://api.github.com/users/${user}`;
+const urlGithubRepo = user =>  `https://api.github.com/users/${user}/repos`;
 
 export default class GithubUserData extends React.Component{
     constructor(props){
@@ -9,24 +10,10 @@ export default class GithubUserData extends React.Component{
             requestFailed: false
         }
     }
-    componentWillMount(){
-        fetch(urlGithubData(this.props.user))
-            .then(response =>{
-                if (!response.ok){ //checks if a response is ok
-                    throw Error ("Request Failed")
-                }
-                return response
-            })
-            .then(d => d.json()) // json the response and store it in d
-            .then(d => {
-                this.setState({
-                    githubData: d // store the json parsed response in order to access specific data
-                })
-            }, () => {this.setState({
-                requestFailed: true
-            })
-            })
-        //end of promise chain
+
+    componentWillMount() {
+        {this.getUserName()}
+        {this.getUserRepo()}
     }
 
     render(){
@@ -40,4 +27,46 @@ export default class GithubUserData extends React.Component{
             </div>
         )
     }
+
+    getUserName () {
+        fetch(urlGithubUser(this.props.user))
+            .then(response => {
+                if (!response.ok) { //checks if a response is ok
+                    throw Error("Request Failed")
+                }
+                return response;
+            })
+            .then(d => d.json()) // json the response and store it in d
+            .then(d => {
+                this.setState({
+                    githubData: d // store the json parsed response in order to access specific data
+                })
+            }, () => {
+                this.setState({
+                    requestFailed: true
+                })
+            })
+    }
+
+    getUserRepo() {
+        fetch(urlGithubRepo(this.props.repo))
+            .then(response => {
+                if (!response.ok) { //checks if a response is ok
+                    throw Error("Request Failed")
+                }
+                return response
+            })
+            .then(d => d.json()) // json the response and store it in d
+            .then(d => {
+                this.setState({
+                    githubRepoData: d // store the json parsed response in order to access specific data
+                })
+            }, () => {
+                this.setState({
+                    requestFailed: true
+                })
+            })
+    }
 }
+
+
