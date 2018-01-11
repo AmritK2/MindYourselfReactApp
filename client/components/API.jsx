@@ -2,6 +2,7 @@ import React from 'react';
 
 const urlForCWData =  username => `https://www.codewars.com/api/v1/users/${username}`
 
+
 export default class CodeWarsData extends React.Component{
     constructor(props){
     super (props); // super props need to added to ensure it initializes correctly
