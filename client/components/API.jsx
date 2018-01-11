@@ -4,17 +4,18 @@ const urlForCWData =  username => `https://www.codewars.com/api/v1/users/${usern
 
 export default class CodeWarsData extends React.Component{
     constructor(props){
-    super (props) // super props need to added to ensure it initializes correctly
+    super (props); // super props need to added to ensure it initializes correctly
         this.state = {
         requestFailed: false
         }
     }
 
-    componentDidMount(){
+
+    componentWillMount() {
         fetch(urlForCWData(this.props.username))
-            .then(response =>{
-                if (!response.ok){ //checks if a response is ok
-                    throw Error ("Request Failed")
+            .then(response => {
+                if (!response.ok) { //checks if a response is ok
+                    throw Error("Request Failed")
                 }
                 return response
             })
@@ -23,15 +24,17 @@ export default class CodeWarsData extends React.Component{
                 this.setState({
                     codeWarsData: d // store the json parsed response in order to access specific data
                 })
-            }, () => {this.setState({
-            requestFailed: true
+            }, () => {
+                this.setState({
+                    requestFailed: true
                 })
             })
         //end of promise chain
     }
+
     render(){
-        if (!this.state.codeWarsData) return <p>Loading..</p>
-        if (this.state.requestFailed) return <p>FAILED</p>
+        if (!this.state.codeWarsData) return <p>Loading..</p>;
+        if (this.state.requestFailed) return <p>FAILED</p>;
         return(
             <div>
                 <h1>CodeWars</h1>

@@ -10,7 +10,7 @@ export default class CodeSchoolData extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         fetch(urlForCWData(this.props.user))
             .then(response => {
                 if (!response.ok) { //checks if a response is ok

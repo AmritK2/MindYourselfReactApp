@@ -9,7 +9,7 @@ export default class GithubUserData extends React.Component{
             requestFailed: false
         }
     }
-    componentDidMount(){
+    componentWillMount(){
         fetch(urlGithubData(this.props.user))
             .then(response =>{
                 if (!response.ok){ //checks if a response is ok
@@ -30,8 +30,8 @@ export default class GithubUserData extends React.Component{
     }
 
     render(){
-        if (!this.state.githubData) return <p>Loading..</p>
-        if (this.state.requestFailed) return <p>FAILED</p>
+        if (!this.state.githubData) return <p>Loading..</p>;
+        if (this.state.requestFailed) return <p>FAILED</p>;
         return(
             <div>
                 <h1>GitHub</h1>

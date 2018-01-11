@@ -2,6 +2,7 @@
     ./client/components/App.jsx
 */
 import React from 'react';
+
 import CodeWarsData from './API.jsx';
 import CodeSchoolData from './APICodeSchool.jsx';
 import GithubUserData from './APIGithub.jsx';
@@ -12,9 +13,15 @@ class App extends React.Component {
         this.state = {
             codeWarsName: '',
             codeSchoolName: '',
-            gitHubName: ''
+            gitHubName: '',
+            showUserDashboard: false,
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
+    handleSubmit(event) {
+        this.setState({...this.state, showUserDashboard: true});
+        event.preventDefault();
     }
 
     handleCWChange(e) {
@@ -29,41 +36,40 @@ class App extends React.Component {
         this.setState({...this.state, gitHubName: e.target.value});
     }
 
+
     render() {
-        return (
+        const userDashBoard =
+            this.state.showUserDashboard ? (<div>
+                <CodeWarsData username={this.state.codeWarsName}/>
+                <CodeSchoolData user={this.state.codeSchoolName}/>
+                <GithubUserData user={this.state.gitHubName}/>
+            </div>) : "";
+        return <form onSubmit={this.handleSubmit}>
+            <h1>Intern Pack</h1>
 
-            <form>
-                <h1>Intern Pack</h1>
+            <h2> Please enter your usernames below</h2>
 
-                <h2> Please enter your usernames below</h2>
+            <label>
+                Code Wars Username:
+            </label>
+            <input type="name" onChange={this.handleCWChange.bind(this)} value={this.state.codeWarsName}/>
+            <br/>
 
-                <label>
-                    Code Wars Username:
-                </label>
-                <input type="name" onChange={this.handleCWChange.bind(this)} value={this.state.codeWarsName}/>
-                <br />
+            <label>
+                Code School Username:
+            </label>
+            <input type="name" onChange={this.handleCSChange.bind(this)} value={this.state.codeSchoolName}/>
+            <br/>
 
-                <label>
-                    Code School Username:
-                </label>
-                <input type="name" onChange={this.handleCSChange.bind(this)} value={this.state.codeSchoolName}/>
-                <br />
+            <label>
+                GitHub Username:
+            </label>
+            <input type="name" onChange={this.handleGitChange.bind(this)} value={this.state.gitHubName}/>
+            <br/>
 
-                <label>
-                    GitHub Username:
-                </label>
-                <input type="name" onChange={this.handleGitChange.bind(this)} value={this.state.gitHubName}/>
-                <br />
-
-                <button type = "submit"> Submit </button>
-                <div>
-                    <CodeWarsData username={this.state.codeWarsName}/>
-                    <CodeSchoolData user={this.state.codeSchoolName}/>
-                    <GithubUserData user={this.state.gitHubName}/>
-                </div>
-            </form>
-
-        );
+            <button type="submit" onClick={this.handleSubmit}>Submit</button>
+            {userDashBoard}
+        </form>;
     }
 }
 
