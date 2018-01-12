@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 import CodeWarsData from './API.jsx';
 import CodeSchoolData from './APICodeSchool.jsx';
 import GithubUserData from './APIGithub.jsx';
 
-class UserForm extends React.Component{
+class UserData extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -70,4 +71,4 @@ class UserForm extends React.Component{
     }
 }
 
-export default UserForm;
+export default UserData;

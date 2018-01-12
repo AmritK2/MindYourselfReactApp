@@ -1,7 +1,11 @@
 /*
     ./webpack.config.js
 */
+const webpack = require('webpack');
+
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './client/index.html',
@@ -9,10 +13,18 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 });
 module.exports = {
-    entry: './client/index.js',
+    entry: {
+        main: './client/index.js',
+        vendor: [
+            "react",
+            "react-dom",
+            "@myob/myob-widgets",
+            "@myob/myob-styles",
+        ]
+    },
     output: {
         path: path.resolve('dist'),
-        filename: 'index_bundle.js'
+        filename: "[name].[chunkhash].js",
     },
     module: {
         loaders: [
@@ -23,9 +35,29 @@ module.exports = {
                 query: {
                     presets: ["es2015", "react", "stage-2"]
                 }
+            },
+            {
+                test: /\.css$/,
+                loaders: [
+                    "style-loader",
+                    "css-loader",
+                ],
+            },
+            {
+                test: /\.(otf|eot|svg|ttf|woff|png|cur|gif)/,
+                options: {
+                    name: "assets/[hash].[ext]",
+                },
+                loader: "file-loader",
             }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig]
+    plugins: [HtmlWebpackPluginConfig,
+        new webpack.HashedModuleIdsPlugin(),
+        new BundleAnalyzerPlugin({analyzerMode: "static", openAnalyzer: false}),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+        })
+    ]
 };
     
