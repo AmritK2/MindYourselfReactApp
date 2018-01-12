@@ -43,7 +43,7 @@ class App extends React.Component {
             <div className="myob">
                 <MYOBLogo className = "logo"/>
                 <div style={{textAlign: 'center'}}>
-                    <Button type = "primary" style={{padding: 20}} onClick={this.handleInternSubmit}>Intern Pack
+                    <Button  type = "primary" onClick={this.handleInternSubmit}>Intern Pack
                     </Button>
                     {chosenInternForm}
                 </div>

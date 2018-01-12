@@ -2,3 +2,8 @@
 div.myob svg {
     width: 20% !important;
 }
+
+button.btn.btn-primary{
+    margin: 10px !important;
+    
+}
