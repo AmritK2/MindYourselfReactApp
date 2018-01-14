@@ -6,56 +6,49 @@ import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
 import "../index.css";
 
-import UserData from './Form.jsx';
-import UserGradData from './FormGrad.jsx';
+import Form from './Form.jsx';
+import FormGrad from './FormGrad.jsx'
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            showUserInternDashboard: false,
-            showUserGradDashboard: false,
+            hideInternButton: false,
+            hideGradButton: false,
         };
-        this.handleInternSubmit = this.handleInternSubmit.bind(this);
-        this.handleGradSubmit = this.handleGradSubmit.bind(this);
+        this.handleInternClick = this.handleInternClick.bind(this);
+        this.handleGradClick = this.handleGradClick.bind(this);
     }
 
-    handleInternSubmit(event) {
-        this.setState({...this.state, showUserDashboard: true});
+    handleInternClick(event){
         event.preventDefault();
+        this.setState({...this.state, hideGradButton: true});
     }
 
-    handleGradSubmit(event) {
-        this.setState({...this.state, showUserGradDashboard: true});
+    handleGradClick(event){
         event.preventDefault();
+        this.setState({...this.state, hideInternButton: true});
     }
 
     render() {
-        const chosenInternForm = this.state.showUserDashboard ? <div style={{textAlign: 'center'}}>
-            <UserData/>
-        </div> : "";
-        const chosenGradForm = this.state.showUserGradDashboard ? <div style={{textAlign: 'center'}}>
-            <UserGradData/>
+        const internForm = this.state.hideGradButton ? <div style={{textAlign: 'center'}}>
+        <Form/>
         </div> : "";
 
+        const gradForm = this.state.hideInternButton?  <div style={{textAlign: 'center'}}>
+        <FormGrad/>
+        </div> : "";
         return (
-            <div className="myob">
-                <MYOBLogo className = "logo"/>
-                <div style={{textAlign: 'center'}}>
-                    <Button  type = "primary" onClick={this.handleInternSubmit}>Intern Pack
-                    </Button>
-                    {chosenInternForm}
-                </div>
-                <div style={{textAlign: 'center'}}>
-                    <Button type="primary" onClick={this.handleGradSubmit}>Grad Pack</Button>
-                    {chosenGradForm}
-                </div>
-
+            <div>
+                <div className="logo-header"><MYOBLogo/></div>
+                <div className = "button-intern"><Button type="primary" onClick={this.handleInternClick}>Intern Pack</Button> </div>
+                <div className = "button-grad"><Button type="primary"  onClick={this.handleGradClick}>Grad Pack</Button> </div>
+                {internForm}
+                {gradForm}
             </div>
         );
     }
 }
 
 export default App;
-

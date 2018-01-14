@@ -38,28 +38,23 @@ export default class CodeSchoolData extends React.Component {
             <div>
                 <h1>Code School</h1>
                 <h2>Name: {this.state.codeSchoolData.user.username}</h2>
-
-                {if (){
-                <h2> Finished Try C# Course</h2>
-            }
-
             </div>
         )
+       
     }
 
-    completedCourses (){
-        let courseExists =  false;
-        let array = this.state.codeSchoolData.courses.completed;
-        let course = "Try C# Course";
-
-        for (var i = 0; i <array.length; i++)
-        {
-            if (array[i] = course)
-            {
-                courseExists = true;
-            }
-        }
-    }
 }
 
-//<h2>Courses: {this.state.codeSchoolData.completed}</h2>
+// completedCourses (){
+//     let courseExists =  false;
+//     let array = this.state.codeSchoolData.courses.completed;
+//     let course = " Course";
+
+//     for (var i = 0; i <array.length; i++)
+//     {
+//         if (array[i] = course)
+//         {
+//             courseExists = true;
+//         }
+//     }
+
