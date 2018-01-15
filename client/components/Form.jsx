@@ -45,7 +45,7 @@ class UserData extends React.Component{
         return <form onSubmit={this.handleSubmit}>
             <h1>Intern Pack</h1>
 
-            <h2> Please enter your usernames below</h2>
+            <h2> Start by entering your usernames below</h2>
 
             <label>
                 Code Wars Username:
