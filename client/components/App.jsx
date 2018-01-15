@@ -14,8 +14,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hideInternButton: false,
-            hideGradButton: false,
+            disableInternButton: false,
+            disableGradButton: false,
         };
         this.handleInternClick = this.handleInternClick.bind(this);
         this.handleGradClick = this.handleGradClick.bind(this);
@@ -23,27 +23,27 @@ class App extends React.Component {
 
     handleInternClick(event){
         event.preventDefault();
-        this.setState({...this.state, hideGradButton: true});
+        this.setState({...this.state, disableGradButton: true, disableInternButton: false});
     }
 
     handleGradClick(event){
         event.preventDefault();
-        this.setState({...this.state, hideInternButton: true});
+        this.setState({...this.state, disableInternButton: true, disableGradButton: false});
     }
 
     render() {
-        const internForm = this.state.hideGradButton ? <div style={{textAlign: 'center'}}>
+        const internForm = this.state.disableGradButton ? <div style={{textAlign: 'center'}}>
         <Form/>
         </div> : "";
 
-        const gradForm = this.state.hideInternButton?  <div style={{textAlign: 'center'}}>
+        const gradForm = this.state.disableInternButton?  <div style={{textAlign: 'center'}}>
         <FormGrad/>
         </div> : "";
         return (
             <div>
                 <div className="logo-header"><MYOBLogo/></div>
                 <div className = "button-intern"><Button type="primary" onClick={this.handleInternClick}>Intern Pack</Button> </div>
-                <div className = "button-grad"><Button type="primary"  onClick={this.handleGradClick}>Grad Pack</Button> </div>
+                <div className = "button-grad"><Button type="primary" onClick={this.handleGradClick}>Grad Pack </Button> </div>
                 {internForm}
                 {gradForm}
             </div>
