@@ -1,7 +1,16 @@
-
-div.myob svg {
-    width: 20% !important;
+.logo-header {
+    width: 20%;
+    
 }
+
+.button-intern{
+    text-align: center;
+}
+
+.button-grad{
+    text-align: center;
+}
+
 
 button.btn.btn-primary{
     margin: 10px !important;

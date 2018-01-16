@@ -19,11 +19,20 @@ export default class GithubUserData extends React.Component{
     render(){
         if (!this.state.githubData) return <p>Loading..</p>;
         if (this.state.requestFailed) return <p>FAILED</p>;
+
+        // if(this.state.githubRepoData){ 
+        //     const presentRepos = this.state.githubRepoData.map((repo) => {
+        //         return repo.name;
+        //   });
+
+        //  console.log(presentRepos);
+                     
+        // }
         return(
             <div>
                 <h1>GitHub</h1>
                 <h2>Name: {this.state.githubData.name}</h2>
-
+                
             </div>
         )
     }
