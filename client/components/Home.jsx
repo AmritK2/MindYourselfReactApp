@@ -17,7 +17,7 @@ render(){
             <Button type="primary">Get Started</Button>
         </Link>
         </div>
-            </div>
+        </div>
         );
     }
 

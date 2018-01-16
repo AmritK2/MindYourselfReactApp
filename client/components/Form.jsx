@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-import CodeWarsData from './API.jsx';
-import CodeSchoolData from './APICodeSchool.jsx';
-import GithubUserData from './APIGithub.jsx';
+
+import { Link } from 'react-router-dom';
+import Dashboard from './Dashboard.jsx';
 
 class UserData extends React.Component{
     constructor(props) {
@@ -12,15 +12,15 @@ class UserData extends React.Component{
             codeWarsName: '',
             codeSchoolName: '',
             gitHubName: '',
-            showUserDashboard: false,
+            //showUserDashboard: false,
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+       // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event) {
-        this.setState({...this.state, showUserDashboard: true});
-        event.preventDefault();
-    }
+    // // handleSubmit(event) {
+    // //     this.setState({...this.state, showUserDashboard: true});
+    // //     event.preventDefault();
+    // // }
 
     handleCWChange(e) {
         this.setState({...this.state, codeWarsName: e.target.value});
@@ -36,13 +36,16 @@ class UserData extends React.Component{
 
 
     render() {
+        //usernames stored
         const userDashBoard =
             this.state.showUserDashboard ? (<div>
                 <CodeWarsData username={this.state.codeWarsName}/>
                 <CodeSchoolData user={this.state.codeSchoolName}/>
                 <GithubUserData user={this.state.gitHubName}/>
             </div>) : "";
-        return <form onSubmit={this.handleSubmit}>
+       
+        return (
+            <form>
             <h1>Intern Pack</h1>
 
             <h2> Start by entering your usernames below</h2>
@@ -65,10 +68,13 @@ class UserData extends React.Component{
             <input type="name" onChange={this.handleGitChange.bind(this)} value={this.state.gitHubName}/>
             <br/>
 
+            <Link to = {"/dashboard"}>
             <button type="submit" onClick={this.handleSubmit}>Submit</button>
-            {userDashBoard}
-        </form>;
+            </Link>
+            </form>
+        );
     }
 }
 
 export default UserData;
+//{userDashBoard}

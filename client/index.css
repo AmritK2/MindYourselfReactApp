@@ -24,3 +24,16 @@ button.btn.btn-primary{
 .getStarted{
     text-align: center;
 }
+
+.dashBoard{
+    text-align: center;
+    font-size: 50px;
+}
+
+.level1{
+    text-align: center;
+}
+.level2{
+    text-align: center;
+    padding: 20px;
+}

@@ -10,6 +10,7 @@ import "../index.css";
 
 import Usernames from './RegisterUsernames.jsx';
 import Home from './Home.jsx';
+import Dashboard from './Dashboard.jsx';
 
 class App extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class App extends React.Component {
             <div> 
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/register" component={Usernames}/>
+                <Route exact path="/dashboard" component={Dashboard}/>
             </div>    
             </BrowserRouter>
         );
