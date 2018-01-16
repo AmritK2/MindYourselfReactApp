@@ -4,6 +4,7 @@ import "../index.css";
 import { Modal } from '@myob/myob-widgets';
 import { Button } from '@myob/myob-widgets';
 import { MYOBLogo } from '@myob/myob-widgets';
+import {Checkbox} from '@myob/myob-widgets';
 
 export default class Dashboard extends React.Component {
 
@@ -36,25 +37,33 @@ export default class Dashboard extends React.Component {
     render() {
 
         const modalOne = this.state.isModal1Open ? <div style={{textAlign: 'center'}}>
-        <Modal title="Level One" size="small" onCancel = {this.handleToggle1} >
+        <Modal title="Level One" size="medium" onCancel = {this.handleToggle1} >
                     <Modal.Body>
-                        Complete the following to complete Level 1: <br />
-                        > Try Git Course from Code School <br />
-                        > Try C# Course from Code School <br />
-                        > Complete 2 challenges in Code CodeWars <br />
-                        > Finish the PaySlip Kata <br />
+                       <h1> Complete the following to complete Level 1: </h1>
+                        <Checkbox name = "chkBox1"
+                         label =  "Try Git Course from Code School"/>
+                        <Checkbox name = "chkBox2"
+                          label = "Try C# Course from Code School" />
+                        <Checkbox name = "chkBox3"
+                          label = "Complete 2 challenges in Code CodeWars " />
+                        <Checkbox name = "chkBox4"
+                          label = "Finish the PaySlip Kata" />
                     </Modal.Body>
                 </Modal>
         </div> : "";
 
         const modalTwo = this.state.isModal2Open ? <div style={{textAlign: 'center'}}>
-        <Modal title="Level Two" size="small" onCancel = {this.handleToggle2} >
+        <Modal title="Level Two" size="medium" onCancel = {this.handleToggle2} >
             <Modal.Body>
-                Complete the following to complete Level 2: <br />
-                > Keeping it Classy with C# from Code School <br />
-                > Git Real Course from Code School <br />
-                > JavaScript RoadTrip Part 1 from Code School <br />
-                > Complete 2 challenges in Code CodeWars <br />
+                <h1> Complete the following to complete Level 2: </h1>
+                <Checkbox name = "chkBox1"
+                    label =  "Keeping it Classy with C# from Code School"/>
+                <Checkbox name = "chkBox1"
+                    label =  "Git Real Course from Code School"/>
+                <Checkbox name = "chkBox1"
+                   label =  "JavaScript RoadTrip Part 1 from Code School"/>
+                <Checkbox name = "chkBox1"
+                    label =  "Complete 2 challenges in Code CodeWars"/>
             </Modal.Body>
         </Modal>
         </div> : "";
