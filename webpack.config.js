@@ -22,9 +22,13 @@ module.exports = {
             "@myob/myob-styles",
         ]
     },
+    devServer: {
+        historyApiFallback: true,
+    },
     output: {
         path: path.resolve('dist'),
         filename: "[name].[chunkhash].js",
+        publicPath: "/",
     },
     module: {
         loaders: [
