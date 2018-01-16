@@ -8,11 +8,28 @@ import {Checkbox} from '@myob/myob-widgets';
 
 export default class LevelOne extends React.Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {
+           isModalOpen: true,
+            
+        };
+        this.handleToggle = this.handleToggle.bind(this);
+    }
+
+    handleToggle(){
+        event.preventDefault();
+        this.setState({...this.setState, isModalOpen:!this.state.isModalOpen});
+    }
+
     render(){
-        
+        if (!this.state.isModalOpen) {
+            return <span/>;
+          }
+      
          return(
             <div>
-                <Modal title="Level One" size="medium" onCancel = {this.handleToggle1} >
+                <Modal title="Level One" size="medium" onCancel = {this.handleToggle} >
                 <Modal.Body>
                     <h1> Complete the following to complete Level 1: </h1>
                     <Checkbox name = "chkBox1"

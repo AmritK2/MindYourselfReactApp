@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
 
     handleModal2(event){
         event.preventDefault();
-        this.setState({...this.setState, isModal2Open: !this.state.isModal2Open} );
+        this.setState({...this.setState, isModal2Open:true} );
     }
 
     render() {
