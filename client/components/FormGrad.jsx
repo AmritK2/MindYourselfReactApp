@@ -12,14 +12,9 @@ export default class UserGradData extends React.Component{
             codeWarsName: '',
             codeSchoolName: '',
             gitHubName: '',
-            showUserDashboard: false,
+     
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleSubmit(event) {
-        this.setState({...this.state, showUserDashboard: true});
-        event.preventDefault();
+     
     }
 
     handleCWChange(e) {
@@ -65,8 +60,9 @@ export default class UserGradData extends React.Component{
             <input type="name" onChange={this.handleGitChange.bind(this)} value={this.state.gitHubName}/>
             <br/>
 
+            <Link to = {"/dashboard"}>
             <button type="submit" onClick={this.handleSubmit}>Submit</button>
-            {userDashBoard}
+            </Link>
         </form>;
     }
 }

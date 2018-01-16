@@ -11,25 +11,32 @@ export default class Dashboard extends React.Component {
         super(props);
         this.state = {
           //chosenLevel1: false,
-            isModalOpen: false
+            isModal1Open: false,
+            isModal2Open: false
         };
         //this.handleLevelOneClick = this.handleLevelOneClick.bind(this);
-        this.handleToggle = this.handleToggle.bind(this);
+        this.handleToggle1 = this.handleToggle1.bind(this);
+        this.handleToggle2 = this.handleToggle2.bind(this);
     }
     // handleLevelOneClick(event){
     //     event.preventDefault();
     //     this.setState({...this.state, chosenLevel1: true});
     // }
 
-    handleToggle(event){
+    handleToggle1(event){
         event.preventDefault();
-        this.setState({...this.setState, isModalOpen: !this.state.isModalOpen} );
+        this.setState({...this.setState, isModal1Open: !this.state.isModal1Open} );
+    }
+
+    handleToggle2(event){
+        event.preventDefault();
+        this.setState({...this.setState, isModal2Open: !this.state.isModal2Open} );
     }
 
     render() {
 
-        const modal = this.state.isModalOpen ? <div style={{textAlign: 'center'}}>
-        <Modal title="Level One" size="large" onCancel = {this.handleToggle} >
+        const modalOne = this.state.isModal1Open ? <div style={{textAlign: 'center'}}>
+        <Modal title="Level One" size="small" onCancel = {this.handleToggle1} >
                     <Modal.Body>
                         Complete the following to complete Level 1: <br />
                         > Try Git Course from Code School <br />
@@ -40,15 +47,28 @@ export default class Dashboard extends React.Component {
                 </Modal>
         </div> : "";
 
+        const modalTwo = this.state.isModal2Open ? <div style={{textAlign: 'center'}}>
+        <Modal title="Level Two" size="small" onCancel = {this.handleToggle2} >
+            <Modal.Body>
+                Complete the following to complete Level 2: <br />
+                > Keeping it Classy with C# from Code School <br />
+                > Git Real Course from Code School <br />
+                > JavaScript RoadTrip Part 1 from Code School <br />
+                > Complete 2 challenges in Code CodeWars <br />
+            </Modal.Body>
+        </Modal>
+        </div> : "";
+
         return (
             <div>
                 <div className="logo-header"><MYOBLogo /></div>
                 <div className="dashBoard"> <h1> Dashboard </h1> </div>
                 <div className = "level1">
-                <Button type="secondary" onClick={this.handleToggle}>Level 1</Button> </div>
+                <Button type="secondary" onClick={this.handleToggle1}>Level 1</Button> </div>
                 <div className = "level2">
-                <Button type="secondary">Level 2</Button> </div>
-                {modal}
+                <Button type="secondary" onClick={this.handleToggle2}>Level 2</Button> </div>
+                {modalOne}
+                {modalTwo}
             </div>
         )
     }
