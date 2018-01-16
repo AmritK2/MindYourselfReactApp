@@ -38,8 +38,6 @@ export default class Usernames extends React.Component{
         <FormGrad/>
         </div> : "";
         return (
-            
-
             <div>
                 <div className="logo-header"><MYOBLogo/></div>
                 <div className = "button-intern"><Button type="primary" onClick={this.handleInternClick}>Intern Pack</Button> </div>

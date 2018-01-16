@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "--history-api-fallback"
+    "build": "webpack -d && cp src /index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
   "dependencies": {
     "@myob/myob-styles": "^0.19.3",
