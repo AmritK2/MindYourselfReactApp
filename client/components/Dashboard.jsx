@@ -5,8 +5,8 @@ import { Modal } from '@myob/myob-widgets';
 import { Button } from '@myob/myob-widgets';
 import { MYOBLogo } from '@myob/myob-widgets';
 import { Checkbox } from '@myob/myob-widgets';
-import LevelOne from './LevelOne.jsx';
-import LevelTwo from './LevelTwo.jsx';
+import LevelOneModal from './LevelOneModal.jsx';
+import LevelTwoModal from './LevelTwoModal.jsx';
 
 export default class Dashboard extends React.Component {
 
@@ -33,12 +33,11 @@ export default class Dashboard extends React.Component {
     render() {
 
         const modalOne = this.state.isModal1Open ? <div style={{ textAlign: 'center' }}>
-            <LevelOne />
-
+            <LevelOneModal />
         </div> : "";
 
         const modalTwo = this.state.isModal2Open ? <div style={{ textAlign: 'center' }}>
-            <LevelTwo />
+            <LevelTwoModal />
         </div> : "";
 
         return (
@@ -51,7 +50,6 @@ export default class Dashboard extends React.Component {
                     <Button type="secondary" onClick={this.handleModal2}>Level 2</Button> </div>
                 {modalOne}
                 {modalTwo}
-              
             </div>
         )
     }

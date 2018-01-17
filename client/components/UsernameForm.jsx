@@ -13,7 +13,7 @@ export default class UsernameForm extends React.Component {
             gitHubName: '',
             showUserDashboard: false
         };
-        //this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {

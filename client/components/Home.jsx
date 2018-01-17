@@ -3,7 +3,6 @@ import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
 
 import "../index.css";
-import RegisterButtons from './RegisterButtons.jsx';
 import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component{

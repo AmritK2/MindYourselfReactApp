@@ -1,6 +1,4 @@
 import React from 'react';
-import Dashboard from './Dashboard.jsx';
-
 const urlForCWData = user => `https://www.codeschool.com/users/${user}.json`;
 
 export default class CodeSchoolData extends React.Component {
@@ -30,19 +28,16 @@ export default class CodeSchoolData extends React.Component {
                     requestFailed: true
                 })
             })
-        //end of promise chain
     }
 
     render() {
         if (!this.state.codeSchoolData) return <p>Loading..</p>;
         if (this.state.requestFailed) return <p>FAILED</p>;
 
-        let completedCourse = "";
-        if(this.state.codeSchoolData){ 
+        if(this.state.codeSchoolData){
             const completedCourses = this.state.codeSchoolData.courses.completed.map((course) => {
                 return course.title;
           });
-          //console.log(completedCourse);
         }
         
         return (

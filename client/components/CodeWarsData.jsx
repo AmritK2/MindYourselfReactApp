@@ -1,7 +1,5 @@
 import React from 'react';
-
 const urlForCWData =  username => `https://www.codewars.com/api/v1/users/${username}`
-
 
 export default class CodeWarsData extends React.Component{
     constructor(props){
@@ -10,7 +8,6 @@ export default class CodeWarsData extends React.Component{
         requestFailed: false
         }
     }
-
 
     componentWillMount() {
         fetch(urlForCWData(this.props.username))
@@ -30,7 +27,6 @@ export default class CodeWarsData extends React.Component{
                     requestFailed: true
                 })
             })
-        //end of promise chain
     }
 
     render(){
@@ -41,7 +37,6 @@ export default class CodeWarsData extends React.Component{
             <h1>Code Wars</h1>
             <h2>Name: {this.state.codeWarsData.name}</h2>
             <h2>Challenges Completed: {this.state.codeWarsData.codeChallenges.totalCompleted}</h2>
-            
             </div>
         )
     }

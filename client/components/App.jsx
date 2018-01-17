@@ -7,7 +7,6 @@ import {MYOBLogo} from '@myob/myob-widgets';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import "../index.css";
-
 import RegisterButtons from './RegisterButtons.jsx';
 import Home from './Home.jsx';
 import Dashboard from './Dashboard.jsx';

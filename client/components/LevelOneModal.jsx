@@ -9,8 +9,7 @@ import {Checkbox} from '@myob/myob-widgets';
 
 
 
-export default class LevelOne extends React.Component{
-
+export default class LevelOneModal extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -41,15 +40,15 @@ export default class LevelOne extends React.Component{
                 <Modal title="Level One" size="medium" onCancel = {this.handleToggle} >
                 <Modal.Body>
                     <h1> Complete the following to complete Level 1: </h1>
-                    <Checkbox name = "chkBox1"
+                    <Checkbox name = "tryGit"
                     label =  "Try Git Course from Code School"
                     onChange = {this.onCheck}
                     checked = {this.state.isChecked}/>
-                    <Checkbox name = "chkBox2"
+                    <Checkbox name = "tryCSharp"
                     label = "Try C# Course from Code School" />
-                    <Checkbox name = "chkBox3"
+                    <Checkbox name = "cwChallanges"
                     label = "Complete 2 challenges in Code CodeWars " />
-                    <Checkbox name = "chkBox4"
+                    <Checkbox name = "payslipKata"
                     label = "Finish the PaySlip Kata" />
                 </Modal.Body>
             </Modal>
