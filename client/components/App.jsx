@@ -9,7 +9,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import "../index.css";
 import RegisterButtons from './RegisterButtons.jsx';
 import Home from './Home.jsx';
-import Dashboard from './Dashboard.jsx';
+import DashboardForLevels from './DashboardForLevels.jsx';
 
 class App extends React.Component {
     render() {
@@ -18,7 +18,7 @@ class App extends React.Component {
             <div> 
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/register" component={RegisterButtons}/>
-                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/dashboard" component={DashboardForLevels}/>
             </div>    
             </BrowserRouter>
         );
