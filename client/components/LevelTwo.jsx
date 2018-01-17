@@ -13,12 +13,18 @@ export default class LevelTwo extends React.Component{
         super(props);
         this.state = {
            isModalOpen: true,
+           isChecked: false
             
         };
         this.handleToggle = this.handleToggle.bind(this);
+        this.onCheck = this.onCheck.bind(this);
     }
 
-    handleToggle(){
+    onCheck(){
+        this.setState({...this.setState, isChecked: !this.state.isChecked});
+    }
+
+    handleToggle(event){
         event.preventDefault();
         this.setState({...this.setState, isModalOpen:!this.state.isModalOpen});
     }
@@ -33,7 +39,9 @@ export default class LevelTwo extends React.Component{
                <Modal.Body>
                    <h1> Complete the following to complete Level 2: </h1>
                    <Checkbox name = "chkBox1"
-                       label =  "Keeping it Classy with C# from Code School"/>
+                       label =  "Keeping it Classy with C# from Code School" 
+                       onChange = {this.onCheck}
+                       checked = {this.state.isChecked}/>
                    <Checkbox name = "chkBox1"
                        label =  "Git Real Course from Code School"/>
                    <Checkbox name = "chkBox1"

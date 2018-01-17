@@ -4,10 +4,10 @@ import {MYOBLogo} from '@myob/myob-widgets';
 
 import "../index.css";
 
-import Form from './Form.jsx';
-import FormGrad from './FormGrad.jsx'
+import UsernameForm from './UsernameForm.jsx';
 
-export default class Usernames extends React.Component{
+
+export default class RegisterButtons extends React.Component{
    
     constructor(props) {
         super(props);
@@ -31,11 +31,11 @@ export default class Usernames extends React.Component{
 
     render() {
         const internForm = this.state.disableGradButton ? <div style={{textAlign: 'center'}}>
-        <Form/>
+        <UsernameForm/>
         </div> : "";
 
         const gradForm = this.state.disableInternButton?  <div style={{textAlign: 'center'}}>
-        <FormGrad/>
+        <UsernameForm/>
         </div> : "";
         return (
             <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Dashboard from './Dashboard.jsx';
 
 const urlForCWData = user => `https://www.codeschool.com/users/${user}.json`;
 
@@ -21,7 +22,8 @@ export default class CodeSchoolData extends React.Component {
             .then(d => d.json()) // json the response and store it in d
             .then(d => {
                 this.setState({
-                    codeSchoolData: d // store the json parsed response in order to access specific data
+                    codeSchoolData: d// store the json parsed response in order to access specific data
+                    
                 })
             }, () => {
                 this.setState({
@@ -36,26 +38,21 @@ export default class CodeSchoolData extends React.Component {
         if (this.state.requestFailed) return <p>FAILED</p>;
 
         let completedCourse = "";
-
         if(this.state.codeSchoolData){ 
             const completedCourses = this.state.codeSchoolData.courses.completed.map((course) => {
                 return course.title;
           });
-
-          completedCourse = completedCourses;
-            
+          //console.log(completedCourse);
         }
         
         return (
             <div>
                 <h1>Code School</h1>
                 <h2>Name: {this.state.codeSchoolData.user.username}</h2>
-                <h2>Courses: {completedCourse}</h2>
-
+                <h2>Courses: {completedCourses}</h2>
             </div>
         )
        
     }
 
 }
-

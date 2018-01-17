@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import "../index.css";
@@ -6,15 +7,23 @@ import { Button } from '@myob/myob-widgets';
 import { MYOBLogo } from '@myob/myob-widgets';
 import {Checkbox} from '@myob/myob-widgets';
 
+
+
 export default class LevelOne extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
            isModalOpen: true,
+           isChecked: false
             
         };
         this.handleToggle = this.handleToggle.bind(this);
+        this.onCheck = this.onCheck.bind(this);
+    }
+
+    onCheck(){
+        this.setState({...this.setState, isChecked: !this.state.isChecked});
     }
 
     handleToggle(){
@@ -33,7 +42,9 @@ export default class LevelOne extends React.Component{
                 <Modal.Body>
                     <h1> Complete the following to complete Level 1: </h1>
                     <Checkbox name = "chkBox1"
-                    label =  "Try Git Course from Code School"/>
+                    label =  "Try Git Course from Code School"
+                    onChange = {this.onCheck}
+                    checked = {this.state.isChecked}/>
                     <Checkbox name = "chkBox2"
                     label = "Try C# Course from Code School" />
                     <Checkbox name = "chkBox3"
