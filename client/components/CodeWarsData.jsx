@@ -1,6 +1,6 @@
 const urlForCWData = username => `https://www.codewars.com/api/v1/users/${username}`;
 
-export default function codeWarsData () {
+export default function codeWarsData (challenges, callback) {
     fetch(urlForCWData("Amrit2"))
         .then(response => {
             if (!response.ok) {
@@ -10,8 +10,9 @@ export default function codeWarsData () {
         })
         .then(d => d.json())
         .then(d => {
-            console.log(d);
+            callback(d.codeChallenges.totalCompleted >= challenges);
         });
+
 }
 
 

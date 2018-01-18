@@ -18,9 +18,6 @@ export default function codeSchoolData(label, callback) {
             });
         })
         .then(titles => {
-            return titles.includes(label)
-        })
-        .then(isThere => {
-            callback(isThere);
+            callback(titles.includes(label))
         });
 }
