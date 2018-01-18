@@ -12,7 +12,9 @@ export default class LevelTwoModal extends React.Component{
         super(props);
         this.state = {
            isModalOpen: true,
-
+            cSharpChecked: false,
+            gitRealChecked: false,
+            jsRoadTripChecked: false
         };
         this.handleToggle = this.handleToggle.bind(this);
     }
@@ -22,7 +24,14 @@ export default class LevelTwoModal extends React.Component{
         event.preventDefault();
         this.setState({...this.setState, isModalOpen:!this.state.isModalOpen});
     }
-    
+
+    componentDidMount() {
+        codeSchoolData("Keeping It Classy With C#", (checked) => this.setState({cSharpChecked:checked}));
+        codeSchoolData("Git Real", (checked) => this.setState({gitRealChecked:checked}));
+        codeSchoolData("JavaScript Road Trip Part 1", (checked) => this.setState({jsRoadTripChecked:checked}));
+
+    }
+
     render(){
         if (!this.state.isModalOpen) {
             return <span/>;
@@ -32,18 +41,18 @@ export default class LevelTwoModal extends React.Component{
         let roadTrip1Label = "JavaScript Road Trip Part 1";
          return(
             <div>
-               <Modal title="Level Two" size="medium" onCancel = {this.handleToggle} >
+               <Modal title="Level Two" size="large" onCancel = {this.handleToggle} >
                <Modal.Body>
                    <h1> Complete the following to complete Level 2: </h1>
                    <Checkbox name = "cSharp"
                        label =  {classyLabel}
-                       checked = {codeSchoolData(classyLabel)}/>
+                       checked = {this.state.cSharpChecked}/>
                    <Checkbox name = "gitReal"
                              label =  {gitRealLabel}
-                             checked = {codeSchoolData(gitRealLabel)}/>
+                             checked = {this.state.gitRealChecked}/>
                    <Checkbox name = "jsRoadtrip1"
                              label =  {roadTrip1Label}
-                             checked = {codeSchoolData(roadTrip1Label)}/>
+                             checked = {this.state.jsRoadTripChecked}/>
                    <Checkbox name = "cwChalleges"
                        label =  "Complete 2 challenges in Code CodeWars"/>
                </Modal.Body>

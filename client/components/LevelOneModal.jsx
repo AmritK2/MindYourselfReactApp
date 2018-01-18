@@ -11,7 +11,8 @@ export default class LevelOneModal extends React.Component {
         super(props);
         this.state = {
             isModalOpen: true,
-
+            tryGitChecked: false,
+            tryCSharpChecked: false
         };
         this.handleToggle = this.handleToggle.bind(this);
     }
@@ -19,6 +20,11 @@ export default class LevelOneModal extends React.Component {
     handleToggle() {
         event.preventDefault();
         this.setState({...this.setState, isModalOpen: !this.state.isModalOpen});
+    }
+
+    componentDidMount() {
+        codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked:checked}));
+        codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked:checked}));
     }
 
     render() {
@@ -30,15 +36,15 @@ export default class LevelOneModal extends React.Component {
         let tryCsharpLabel = "Try C#";
         return (
             <div>
-                <Modal title="Level One" size="medium" onCancel={this.handleToggle}>
+                <Modal title="Level One" size="large" onCancel={this.handleToggle}>
                     <Modal.Body>
                         <h1> Complete the following to complete Level 1: </h1>
-                        <Checkbox name="tryGit"
+                        <Checkbox name={gitLabel}
                                   label={gitLabel}
-                                  checked={codeSchoolData(gitLabel)}/>
+                                  checked= {this.state.tryGitChecked}/>
                         <Checkbox name="tryCSharp"
                                   label={tryCsharpLabel}
-                                  checked={codeSchoolData(tryCsharpLabel)}/>
+                                  checked={this.state.tryCSharpChecked}/>
                         <Checkbox name="cwChallanges"
                                   label="Complete 2 challenges in Code CodeWars "/>
                         <Checkbox name="payslipKata"

@@ -3,8 +3,8 @@ import "babel-polyfill";
 
 const urlForCWData = user => `https://www.codeschool.com/users/${user}.json`;
 
-export default async function codeSchoolData(label) {
-    let courses = await fetch(urlForCWData("AmritK2"))
+export default function codeSchoolData(label, callback) {
+    fetch(urlForCWData("AmritK2"))
         .then(response => {
             if (!response.ok) {
                 throw Error("Request Failed")
@@ -16,6 +16,11 @@ export default async function codeSchoolData(label) {
             return d.courses.completed.map((course) => {
                 return course.title;
             });
+        })
+        .then(titles => {
+            return titles.includes(label)
+        })
+        .then(isThere => {
+            callback(isThere);
         });
-    return courses.includes(label);
 }
