@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CodeWarsData from './CodeWarsData.jsx';
-// import CodeSchoolData from './CodeSchoolData.jsx';
-import GithubUserData from './GithubUserData.jsx';
+// import CodeWarsData from './CodeWarsData.jsx';
+// // import CodeSchoolData from './CodeSchoolData.jsx';
+// import githubUserData from './GithubUserData.jsx';
 
 export default class UsernameForm extends React.Component {
     constructor(props) {

@@ -9,8 +9,6 @@ import LevelOneModal from './LevelOneModal.jsx';
 import LevelTwoModal from './LevelTwoModal.jsx';
 
 
-import githubUserData from './GithubUserData.jsx';
-
 export default class DashboardForLevels extends React.Component {
 
     constructor(props) {
@@ -34,15 +32,12 @@ export default class DashboardForLevels extends React.Component {
     }
 
     render() {
-
         const modalOne = this.state.isLevel1ModalOpen ? <div style={{ textAlign: 'center' }}>
             <LevelOneModal />
         </div> : "";
-
         const modalTwo = this.state.isLevel2ModalOpen ? <div style={{ textAlign: 'center' }}>
             <LevelTwoModal />
         </div> : "";
-
         return (
             <div>
                 <div className="logo-header"><MYOBLogo /></div>
@@ -54,7 +49,6 @@ export default class DashboardForLevels extends React.Component {
                 {modalOne}
                 {modalTwo}
 
-                {githubUserData()}
             </div>
         )
     }

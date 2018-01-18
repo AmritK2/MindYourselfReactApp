@@ -14,7 +14,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 module.exports = {
     entry: {
-        main: './client/index.js',
+        main: ['babel-polyfill', './client/index.js'],
         vendor: [
             "react",
             "react-dom",
