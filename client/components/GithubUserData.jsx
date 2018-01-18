@@ -2,7 +2,6 @@ const urlGithubUser = user => `https://api.github.com/users/${user}`;
 const urlGithubRepo = user =>  `https://api.github.com/users/${user}/repos`;
 
 export default function githubUserData () {
-    GetGitUserProfile();
     getUserRepo();
 
     function GetGitUserProfile() {
@@ -29,8 +28,11 @@ export default function githubUserData () {
             })
             .then(d => d.json())
             .then(d => {
-                console.log(d);
+                return d.map((repo) => {
+                    return repo.name;
+                });
             })
+            .then(d => console.log(d))
     }
 }
 
