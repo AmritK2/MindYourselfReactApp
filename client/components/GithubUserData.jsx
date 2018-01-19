@@ -1,4 +1,4 @@
-const urlForPullRequest = user => `https://api.github.com/repos/${user}/testrepo/pulls/3`;
+const urlForPullRequest = (user, repo) => `https://api.github.com/repos/${user}/${repo}/pulls/4`;
 const urlGithubRepo = user =>  `https://api.github.com/users/${user}/repos`;
 
 export default function githubUserData () {
@@ -6,7 +6,7 @@ export default function githubUserData () {
     getPullRequestNumber();
 
     function getPullRequestNumber() {
-        fetch(urlForPullRequest("Amrit2"))  //can't have repo in it?
+        fetch(urlForPullRequest("Amrit2", "testrepo"))  //variable for number - aashiq is alright
             .then(response => {
                 if (!response.ok) {
                     throw Error("Request Failed")
@@ -15,7 +15,7 @@ export default function githubUserData () {
             })
             .then(d => d.json())
             .then(d => {
-                console.log(d.merged); 
+                console.log(d.merged);
             })
     }
 
