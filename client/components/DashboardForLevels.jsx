@@ -7,7 +7,7 @@ import { MYOBLogo } from '@myob/myob-widgets';
 import { Checkbox } from '@myob/myob-widgets';
 import LevelOneModal from './LevelOneModal.jsx';
 import LevelTwoModal from './LevelTwoModal.jsx';
-
+import githubUserData from './GithubUserData.jsx';
 
 export default class DashboardForLevels extends React.Component {
 
@@ -48,7 +48,7 @@ export default class DashboardForLevels extends React.Component {
                     <Button type="secondary" onClick={this.handleLevel2ModalClick}>Level 2</Button> </div>
                 {modalOne}
                 {modalTwo}
-
+                {githubUserData()}
             </div>
         )
     }
