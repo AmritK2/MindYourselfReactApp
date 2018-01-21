@@ -33,7 +33,6 @@ export default class UsernameForm extends React.Component {
 
 
     render() {
-
         // const userDashBoard =
         //     this.state.showUserDashboard ? (<div>
         //         <codeWarsData username={this.state.codeWarsName} />

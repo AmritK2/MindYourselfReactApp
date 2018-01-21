@@ -1,5 +1,5 @@
-import React from 'react';
 
+import React from 'react';
 import "../index.css";
 import {Modal} from '@myob/myob-widgets';
 import {Button} from '@myob/myob-widgets';

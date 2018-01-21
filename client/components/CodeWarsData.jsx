@@ -8,9 +8,9 @@ export default function codeWarsData (challenges, callback) {
             }
             return response
         })
-        .then(d => d.json())
-        .then(d => {
-            callback(d.codeChallenges.totalCompleted >= challenges);
+        .then(receivedData => receivedData.json())
+        .then(receivedData => {
+            callback(receivedData.codeChallenges.totalCompleted >= challenges);
         });
 
 }

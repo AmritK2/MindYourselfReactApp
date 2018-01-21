@@ -6,6 +6,7 @@ import {Checkbox} from '@myob/myob-widgets';
 
 import codeSchoolData from './CodeSchoolData.jsx';
 import codeWarsData from './CodeWarsData.jsx';
+import getCodeReviewState from './GithubUserData.jsx';
 
 export default class LevelOneModal extends React.Component {
     constructor(props) {
@@ -27,7 +28,8 @@ export default class LevelOneModal extends React.Component {
     componentDidMount() {
         codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked:checked}));
         codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked:checked}));
-        codeWarsData(2, (checked) => this.setState({completedCWChallenges:checked}))
+        codeWarsData(2, (checked) => this.setState({completedCWChallenges:checked}));
+        getCodeReviewState("testrepo", (checked) => this.setState({completedPaySlipKata:checked}));
     }
 
     render() {
@@ -38,6 +40,7 @@ export default class LevelOneModal extends React.Component {
         let gitLabel = "Try Git";
         let tryCsharpLabel = "Try C#";
         let kataChallenges = "Must have completed 2 Code Wars";
+        let paySlipKata = "PaySlip Kata Finished";
         return (
             <div>
                 <Modal title="Level One" size="large" onCancel={this.handleToggle}>
@@ -53,7 +56,8 @@ export default class LevelOneModal extends React.Component {
                                   label= {kataChallenges}
                                   checked={this.state.completedCWChallenges}/>
                         <Checkbox name="payslipKata"
-                                  label="Finish the PaySlip Kata"/>
+                                  label={paySlipKata}
+                                  checked={this.state.completedPaySlipKata}/>
                     </Modal.Body>
                 </Modal>
             </div>

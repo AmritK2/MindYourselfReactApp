@@ -11,9 +11,9 @@ export default function codeSchoolData(label, callback) {
             }
             return response;
         })
-        .then(d => d.json())
-        .then(d => {
-            return d.courses.completed.map((course) => {
+        .then(receivedData => receivedData.json())
+        .then(receivedData => {
+            return receivedData.courses.completed.map((course) => {
                 return course.title;
             });
         })
