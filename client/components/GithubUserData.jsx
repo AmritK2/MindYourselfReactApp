@@ -1,17 +1,22 @@
-const urlForPullRequest = (user, repo) => `https://api.github.com/repos/${user}/${repo}/pulls/4`;
+const urlForPullRequest = (user, repo, requestNumber) => `https://api.github.com/repos/${user}/${repo}/pulls/${requestNumber}`;
 
 export default function getCodeReviewState(repoName, callback) {
-        fetch(urlForPullRequest("Amrit2", repoName))  //include variable for number
-            .then(response => {
-                if (!response.ok) {
-                    throw Error("Request Failed")
-                }
-                return response;
-            })
-            .then(receivedData => receivedData .json())
-            .then(receivedData => {
+    let requestNumber = "1";
+    let user = "AmritK2";
+    fetch(urlForPullRequest(user, repoName, requestNumber))
+        .then(response => {
+            if (!response.ok) {
+                throw Error("Request Failed")
+            }
+            return response;
+        })
+
+        .then(receivedData => receivedData.json())
+        .then(receivedData => {
+            if (receivedData.merged_by != user){
                 callback(receivedData.merged);
-            })
-    }
+            }
+        })
+}
 
 
