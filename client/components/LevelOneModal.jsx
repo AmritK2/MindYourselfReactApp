@@ -4,9 +4,9 @@ import "../index.css";
 import {Modal} from '@myob/myob-widgets';
 import {Checkbox} from '@myob/myob-widgets';
 
-import codeSchoolData from './CodeSchoolData.jsx';
-import codeWarsData from './CodeWarsData.jsx';
-import getCodeReviewState from './GithubUserData.jsx';
+import codeSchoolData from '../APICalls/CodeSchoolData.js';
+import codeWarsData from '../APICalls/CodeWarsData.js';
+import getCodeReviewState from '../APICalls/GithubUserData.js';
 
 export default class LevelOneModal extends React.Component {
     constructor(props) {

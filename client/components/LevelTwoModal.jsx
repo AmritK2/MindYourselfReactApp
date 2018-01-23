@@ -1,12 +1,11 @@
-
 import React from 'react';
 import "../index.css";
 import {Modal} from '@myob/myob-widgets';
 import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
 import {Checkbox} from '@myob/myob-widgets';
-import codeSchoolData from './CodeSchoolData.jsx';
-import codeWarsData from "./CodeWarsData.jsx";
+import codeSchoolData from '../APICalls/CodeSchoolData.js';
+import codeWarsData from "../APICalls/CodeWarsData.js";
 
 export default class LevelTwoModal extends React.Component {
     constructor(props) {

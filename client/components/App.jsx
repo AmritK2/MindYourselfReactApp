@@ -9,10 +9,10 @@ import RegisterButtons from './RegisterButtons.jsx';
 import Home from './Home.jsx';
 import DashboardForLevels from './DashboardForLevels.jsx';
 
-
 class App extends React.Component {
     render() {
         return (
+
             <BrowserRouter>
             <div> 
                 <Route exact path="/" component={Home}/>
@@ -23,5 +23,4 @@ class App extends React.Component {
         );
     }
 }
-
 export default App;
