@@ -1,6 +1,4 @@
-/*
-    ./client/components/App.jsx
-*/
+
 import React from 'react';
 import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';

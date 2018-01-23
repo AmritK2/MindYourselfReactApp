@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component{
 render(){
-
+// put me to sleep!!!
     return(<div>
         <div className="logo-header"><MYOBLogo/></div>
         <div className = "welcomeTitle" ><h1>Welcome Aboard!</h1></div>

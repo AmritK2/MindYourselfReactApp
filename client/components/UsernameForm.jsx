@@ -6,7 +6,7 @@ export default class UsernameForm extends React.Component {
         super(props);
         this.state = {
             codeWarsName: '',
-            codeSchoolName: '',
+            codeSchoolName: '',// objects for the names
             gitHubName: '',
             showUserDashboard: false
         };
@@ -30,13 +30,6 @@ export default class UsernameForm extends React.Component {
 
 
     render() {
-        // const userDashBoard =
-        //     this.state.showUserDashboard ? (<div>
-        //         <codeWarsData username={this.state.codeWarsName} />
-        //         <CodeSchoolData user={this.state.codeSchoolName} />
-        //         <GithubUserData user={this.state.gitHubName} />
-        //     </div>) : "";
-
         return (
             <form>
                 

@@ -21,7 +21,9 @@ export default class LevelTwoModal extends React.Component {
         this.handleToggle = this.handleToggle.bind(this);
     }
 
-
+//extract out the levels and the tasks
+    //END-END test
+    //enzyme and JEST
     handleToggle(event) {
         event.preventDefault();
         this.setState({...this.setState, isModalOpen: !this.state.isModalOpen});

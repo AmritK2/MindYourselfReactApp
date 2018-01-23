@@ -2,7 +2,7 @@ import "babel-core/register";
 import "babel-polyfill";
 
 const urlForCWData = user => `https://www.codeschool.com/users/${user}.json`;
-
+//extract api calls into folder
 export default function codeSchoolData(label, callback) {
     fetch(urlForCWData("AmritK2"))
         .then(response => {

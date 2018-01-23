@@ -36,6 +36,7 @@ export default class RegisterButtons extends React.Component{
 
         const gradForm = this.state.disableInternButton?  <div style={{textAlign: 'center'}}>
         <UsernameForm/>
+
         </div> : "";
         return (
             <div>
@@ -48,3 +49,5 @@ export default class RegisterButtons extends React.Component{
         );
     }
 }
+
+//render the same form (once)
