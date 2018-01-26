@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -d && cp src /index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
-    "build:prod": "webpack -p && cp src/index.html dist/index.html"
+    "build:prod": "webpack -p && cp src/index.html dist/index.html",
+    "test": "jest"
   },
   "dependencies": {
     "@myob/myob-styles": "^0.19.3",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -37,7 +39,11 @@
     "file-loader": "^1.1.6",
     "jest": "^22.1.4",
     "jest-enzyme": "^4.0.2",
+    "react-test-renderer": "^16.2.0",
     "style-loader": "^0.19.1",
     "webpack-bundle-analyzer": "^2.9.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   }
 }

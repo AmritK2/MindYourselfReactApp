@@ -26,7 +26,9 @@ export default class LevelOneModal extends React.Component {
     }
 
     componentDidMount() {
-        codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked:checked}));
+        // const myobId = getMyobIdFromGraphExplorer();
+        // const result = getUserInfo("123");
+        codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked:checked}));//result.codeSchoolUsername
         codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked:checked}));
         codeWarsData(2, (checked) => this.setState({completedCWChallenges:checked}));
         getCodeReviewState("PaySlip", (checked) => this.setState({completedPaySlipKata:checked}));

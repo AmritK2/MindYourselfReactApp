@@ -1,4 +1,5 @@
-const Enzyme = require('enzyme');
-const EnzymeAdapter = require ('enzyme-adapter-react-15');
-
-Enzyme.configure({adapter: new EnzymeAdapter()});
+// import 'jest-enzyme;'
+// const Enzyme = require('enzyme');
+// const EnzymeAdapter = require ('enzyme-adapter-react-15');
+//
+// Enzyme.configure({adapter: new EnzymeAdapter()});

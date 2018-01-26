@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 import UsernameForm from '../UsernameForm.jsx';
 import {expect} from "jest-enzyme";
+// import renderer from "react-test-renderer";
 
 describe('UserNameForm Component', () => {
 

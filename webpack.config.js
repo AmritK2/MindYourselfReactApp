@@ -1,17 +1,13 @@
-/*
-    ./webpack.config.js
-*/
 const webpack = require('webpack');
-
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './client/index.html',
     filename: 'index.html',
     inject: 'body'
 });
+
 module.exports = {
     entry: {
         main: ['babel-polyfill', './client/index.js'],
