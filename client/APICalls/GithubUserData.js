@@ -1,9 +1,9 @@
 const urlForPullRequest = (user, repo, requestNumber) => `https://api.github.com/repos/${user}/${repo}/pulls/${requestNumber}`;
 
-export default function getCodeReviewState(repoName, callback) {
+export default function getCodeReviewState(repoName, callback, userName) {
     let requestNumber = "1";
-    let user = "AmritK2";
-    fetch(urlForPullRequest(user, repoName, requestNumber))
+    // let user = "AmritK2";
+    fetch(urlForPullRequest(userName, repoName, requestNumber))
         .then(response => {
             if (!response.ok) {
                 throw Error("Request Failed")
@@ -13,7 +13,7 @@ export default function getCodeReviewState(repoName, callback) {
 
         .then(receivedData => receivedData.json())
         .then(receivedData => {
-            if (receivedData.merged_by != user){
+            if (receivedData.merged_by != userName){
                 callback(receivedData.merged);
             }
         })

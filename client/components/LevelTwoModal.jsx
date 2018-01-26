@@ -6,6 +6,8 @@ import {MYOBLogo} from '@myob/myob-widgets';
 import {Checkbox} from '@myob/myob-widgets';
 import codeSchoolData from '../APICalls/CodeSchoolData.js';
 import codeWarsData from "../APICalls/CodeWarsData.js";
+import {getUserInfo} from "../APICalls/UserService";
+
 
 export default class LevelTwoModal extends React.Component {
     constructor(props) {
@@ -28,11 +30,12 @@ export default class LevelTwoModal extends React.Component {
         this.setState({...this.setState, isModalOpen: !this.state.isModalOpen});
     }
 
-    componentDidMount() {
-        codeSchoolData("Keeping It Classy With C#", (checked) => this.setState({cSharpChecked: checked}));
-        codeSchoolData("Git Real", (checked) => this.setState({gitRealChecked: checked}));
-        codeSchoolData("JavaScript Road Trip Part 1", (checked) => this.setState({jsRoadTripChecked: checked}));
-        codeWarsData(4, (checked) => this.setState({completedCWChallenges: checked}))
+    async componentDidMount() {
+        const result = await getUserInfo();
+        codeSchoolData("Keeping It Classy With C#", (checked) => this.setState({cSharpChecked: checked}), result.codeSchoolUsername);
+        codeSchoolData("Git Real", (checked) => this.setState({gitRealChecked: checked}), result.codeSchoolUsername);
+        codeSchoolData("JavaScript Road Trip Part 1", (checked) => this.setState({jsRoadTripChecked: checked}), result.codeSchoolUsername);
+        codeWarsData(4, (checked) => this.setState({completedCWChallenges: checked}), result.gitHubUsername)
     }
 
     render() {

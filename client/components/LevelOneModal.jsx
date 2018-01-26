@@ -7,6 +7,8 @@ import {Checkbox} from '@myob/myob-widgets';
 import codeSchoolData from '../APICalls/CodeSchoolData.js';
 import codeWarsData from '../APICalls/CodeWarsData.js';
 import getCodeReviewState from '../APICalls/GithubUserData.js';
+import {getUserInfo} from "../APICalls/UserService";
+
 
 export default class LevelOneModal extends React.Component {
     constructor(props) {
@@ -25,13 +27,13 @@ export default class LevelOneModal extends React.Component {
         this.setState({...this.setState, isModalOpen: !this.state.isModalOpen});
     }
 
-    componentDidMount() {
-        // const myobId = getMyobIdFromGraphExplorer();
-        // const result = getUserInfo("123");
-        codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked:checked}));//result.codeSchoolUsername
-        codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked:checked}));
-        codeWarsData(2, (checked) => this.setState({completedCWChallenges:checked}));
-        getCodeReviewState("PaySlip", (checked) => this.setState({completedPaySlipKata:checked}));
+    async componentDidMount() {
+        const result = await getUserInfo();
+        // console.log(result);
+        codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked: checked}), result.codeSchoolUsername);
+        codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked: checked}), result.codeSchoolUsername);
+        codeWarsData(2, (checked) => this.setState({completedCWChallenges: checked}), result.codeWarsUsername);
+        getCodeReviewState("PaySlip", (checked) => this.setState({completedPaySlipKata: checked}), result.gitHubUsername);
     }
 
     render() {

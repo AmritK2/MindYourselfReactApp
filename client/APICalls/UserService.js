@@ -20,7 +20,7 @@ const createUser = user => {
 // // const getMyobIdFromGraphExplorer
 
 const getUserInfo = () => {
-    return fetch(getUser(123)).then((response) => {
+    return fetch(getUser(1)).then((response) => {
         if (!response.ok) {
             throw Error("Request Failed")
         }

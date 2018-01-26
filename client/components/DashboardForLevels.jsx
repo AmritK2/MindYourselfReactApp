@@ -5,7 +5,6 @@ import { Modal } from '@myob/myob-widgets';
 import { Button } from '@myob/myob-widgets';
 import { MYOBLogo } from '@myob/myob-widgets';
 import { Checkbox } from '@myob/myob-widgets';
-import {getUserInfo} from "../APICalls/UserService";
 
 import LevelOneModal from './LevelOneModal.jsx';
 import LevelTwoModal from './LevelTwoModal.jsx';
@@ -32,10 +31,7 @@ export default class DashboardForLevels extends React.Component {
         this.setState({ ...this.setState, isLevel2ModalOpen: !this.state.isLevel2ModalOpen });
     }
 
-    async componentDidMount(){
-        const result = await getUserInfo();
-        console.log(result);
-    }
+
     render() {
         const modalOne = this.state.isLevel1ModalOpen ? <div style={{ textAlign: 'center' }}>
             <LevelOneModal />
