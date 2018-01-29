@@ -13,8 +13,11 @@
     "@myob/myob-styles": "^0.19.3",
     "@myob/myob-widgets": "^0.53.5",
     "codeschool-api": "0.0.2",
+    "expose-loader": "^0.7.4",
     "html-webpack-plugin": "^2.30.1",
+    "modular-adal-angular": "^2.0.0",
     "path": "^0.12.7",
+    "q": "^1.5.1",
     "react": "15.4.2",
     "react-bootstrap": "^0.32.0",
     "react-dom": "15.4.2",
@@ -35,15 +38,24 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.8",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-adapter-react-15.4": "^1.0.5",
     "file-loader": "^1.1.6",
     "jest": "^22.1.4",
-    "jest-enzyme": "^4.0.2",
+    "react-addons-test-utils": "15.4",
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.19.1",
     "webpack-bundle-analyzer": "^2.9.2"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
+    "setupFiles": [
+      "<rootDir>/_tests_/test-setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/client/**/*.spec.jsx",
+      "<rootDir>/client/**/*.spec.js"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }

@@ -13,10 +13,11 @@ render(){
         <div className = "welcomeTitle" ><h1>Welcome Aboard!</h1></div>
         <div className = "getStarted"> 
         <Link to={"/register"}>
-            <Button type="primary">Get Started</Button>
+            <Button className="getStartedButton" type="primary">Get Started</Button>
         </Link>
         </div>
         </div>
         );
     }
 }
+

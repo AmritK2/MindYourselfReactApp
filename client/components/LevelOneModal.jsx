@@ -17,7 +17,7 @@ export default class LevelOneModal extends React.Component {
             isModalOpen: true,
             tryGitChecked: false,
             tryCSharpChecked: false,
-            completedCWChallenges: false,
+            checkedCompletedCWChallenges: false,
         };
         this.handleToggle = this.handleToggle.bind(this);
     }
@@ -32,7 +32,7 @@ export default class LevelOneModal extends React.Component {
         // console.log(result);
         codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked: checked}), result.codeSchoolUsername);
         codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked: checked}), result.codeSchoolUsername);
-        codeWarsData(2, (checked) => this.setState({completedCWChallenges: checked}), result.codeWarsUsername);
+        codeWarsData(2, (checked) => this.setState({checkedCompletedCWChallenges: checked}), result.codeWarsUsername);
         getCodeReviewState("PaySlip", (checked) => this.setState({completedPaySlipKata: checked}), result.gitHubUsername);
     }
 
@@ -58,7 +58,7 @@ export default class LevelOneModal extends React.Component {
                                   checked={this.state.tryCSharpChecked}/>
                         <Checkbox name="cwChallanges"
                                   label= {kataChallenges}
-                                  checked={this.state.completedCWChallenges}/>
+                                  checked={this.state.checkedCompletedCWChallenges}/>
                         <Checkbox name="payslipKata"
                                   label={paySlipKata}
                                   checked={this.state.completedPaySlipKata}/>

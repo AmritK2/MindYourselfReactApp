@@ -62,7 +62,7 @@ export default class LevelTwoModal extends React.Component {
                                   checked={this.state.jsRoadTripChecked}/>
                         <Checkbox name="cwChalleges"
                                   label={kataChallenges}
-                                  checked={this.state.completedCWChallenges}/>
+                                  checked={this.state.checkedCompletedCWChallenges}/>
                     </Modal.Body>
                 </Modal>
             </div>

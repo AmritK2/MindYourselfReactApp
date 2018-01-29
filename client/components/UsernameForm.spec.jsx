@@ -1,12 +1,10 @@
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
-import UsernameForm from '../UsernameForm.jsx';
-import {expect} from "jest-enzyme";
-// import renderer from "react-test-renderer";
+import {shallow} from 'enzyme';
+import UsernameForm from './UsernameForm.jsx';
 
 describe('UserNameForm Component', () => {
 
-    it ('should render without throwing an error', () => {
+    it ('should render properly', () => {
         expect(shallow(<UsernameForm />).exists(<form className="usernameInput"> </form>)).toBe(true)
     });
 

@@ -11,7 +11,7 @@ export default class UsernameForm extends React.Component {
             codeSchoolUsername: "",
             codeWarsUsername: "",
             gitHubUsername: "",
-            myobId: "1"
+            myobId: "1" //need to be changed
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }

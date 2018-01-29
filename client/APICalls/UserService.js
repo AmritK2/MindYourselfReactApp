@@ -1,8 +1,8 @@
-const userAPI = "https://m01ikd6d68.execute-api.ap-southeast-1.amazonaws.com/dev/users";
-const getUser = id => `https://m01ikd6d68.execute-api.ap-southeast-1.amazonaws.com/dev/users/${id}`;
+const putUserData = "https://m01ikd6d68.execute-api.ap-southeast-1.amazonaws.com/dev/users";
+const getUserData = loginID => `https://m01ikd6d68.execute-api.ap-southeast-1.amazonaws.com/dev/users/${loginID}`;
 
 const createUser = user => {
-    fetch(userAPI, {
+    fetch(putUserData, {
         method: "post",
         body: JSON.stringify(user)
     }).then((response) => {
@@ -16,11 +16,10 @@ const createUser = user => {
         throw error;
     })
 };
-//
 // // const getMyobIdFromGraphExplorer
 
 const getUserInfo = () => {
-    return fetch(getUser(1)).then((response) => {
+    return fetch(getUserData(1)).then((response) => {
         if (!response.ok) {
             throw Error("Request Failed")
         }
