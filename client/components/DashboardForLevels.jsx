@@ -46,7 +46,7 @@ export default class DashboardForLevels extends React.Component {
                 <div className="logo-header"><MYOBLogo /></div>
                 <div className="dashBoard"> <h1> Dashboard </h1> </div>
                 <div className="level1">
-                    <Button type="secondary" onClick={this.handleLevel1ModalClick}>Level 1</Button> </div>
+                    <Button className= "level1-button" type="secondary" onClick={this.handleLevel1ModalClick}>Level 1</Button> </div>
                 <div className="level2">
                     <Button type="secondary" onClick={this.handleLevel2ModalClick}>Level 2</Button> </div>
                 {modalOne}
