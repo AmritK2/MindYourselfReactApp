@@ -3,11 +3,19 @@ import {shallow} from 'enzyme';
 import RegisterButtons from './RegisterButtons.jsx';
 
 describe('Register Buttons Component', () => {
+    const fakeEvent = {preventDefault: jest.fn()};
 
     it('should render intern button ', () => {
         const wrapper = shallow(<RegisterButtons/>);
         expect(wrapper.state().showUsernameForm).toBe(false);
-        wrapper.findWhere(n => n.type() === 'button-intern' && n.contains('Intern Pack')).simulate('click');
+        wrapper.find(".qa-intern-button").simulate("click", fakeEvent);
+        expect(wrapper.state().showUsernameForm).toBe(true);
+    });
+
+    it('should render grad button ', () => {
+        const wrapper = shallow(<RegisterButtons/>);
+        expect(wrapper.state().showUsernameForm).toBe(false);
+        wrapper.find(".qa-grad-button").simulate("click", fakeEvent);
         expect(wrapper.state().showUsernameForm).toBe(true);
     });
 });

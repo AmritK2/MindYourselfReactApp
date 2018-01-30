@@ -28,8 +28,8 @@ export default class RegisterButtons extends React.Component{
         return (
             <div>
                 <div className="logo-header"><MYOBLogo/></div>
-                <div className = "button-intern"><Button type="primary" onClick={this.handleClick}>Intern Pack</Button> </div>
-                <div className = "button-grad"><Button type="primary" onClick={this.handleClick}>Grad Pack </Button> </div>
+                <div className = "button-intern"><Button className="qa-intern-button" type="primary" onClick={this.handleClick}>Intern Pack</Button> </div>
+                <div className = "button-grad"><Button className="qa-grad-button" type="primary" onClick={this.handleClick}>Grad Pack </Button> </div>
                 {showForm}
             </div>
         );
