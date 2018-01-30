@@ -29,10 +29,11 @@ export default class LevelOneModal extends React.Component {
 
     async componentDidMount() {
         const result = await getUserInfo();
+        const numberOfChallenges = 2;
         // console.log(result);
         codeSchoolData("Try Git", (checked) => this.setState({tryGitChecked: checked}), result.codeSchoolUsername);
         codeSchoolData("Try C#", (checked) => this.setState({tryCSharpChecked: checked}), result.codeSchoolUsername);
-        codeWarsData(2, (checked) => this.setState({checkedCompletedCWChallenges: checked}), result.codeWarsUsername);
+        codeWarsData(numberOfChallenges, (checked) => this.setState({checkedCompletedCWChallenges: checked}), result.codeWarsUsername);
         getCodeReviewState("PaySlip", (checked) => this.setState({completedPaySlipKata: checked}), result.gitHubUsername);
     }
 

@@ -1,53 +1,37 @@
 import React from 'react';
 import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
-
 import "../index.css";
-
 import UsernameForm from './UsernameForm.jsx';
-
 
 export default class RegisterButtons extends React.Component{
    
     constructor(props) {
         super(props);
         this.state = {
-            disableInternButton: false,
-            disableGradButton: false,
+            showUsernameForm: false
         };
-        this.handleInternClick = this.handleInternClick.bind(this);
-        this.handleGradClick = this.handleGradClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleInternClick(event){
+    handleClick(event){
         event.preventDefault();
-        this.setState({...this.state, disableGradButton: true, disableInternButton: false});
+        this.setState({...this.state, showUsernameForm: true});
     }
 
-    handleGradClick(event){
-        event.preventDefault();
-        this.setState({...this.state, disableInternButton: true, disableGradButton: false});
-    }
 
     render() {
-        const internForm = this.state.disableGradButton ? <div style={{textAlign: 'center'}}>
+        const showForm = this.state.showUsernameForm ? <div style={{textAlign: 'center'}}>
         <UsernameForm/>
         </div> : "";
 
-        const gradForm = this.state.disableInternButton?  <div style={{textAlign: 'center'}}>
-        <UsernameForm/>
-
-        </div> : "";
         return (
             <div>
                 <div className="logo-header"><MYOBLogo/></div>
-                <div className = "button-intern"><Button type="primary" onClick={this.handleInternClick}>Intern Pack</Button> </div>
-                <div className = "button-grad"><Button type="primary" onClick={this.handleGradClick}>Grad Pack </Button> </div>
-                {internForm}
-                {gradForm}
+                <div className = "button-intern"><Button type="primary" onClick={this.handleClick}>Intern Pack</Button> </div>
+                <div className = "button-grad"><Button type="primary" onClick={this.handleClick}>Grad Pack </Button> </div>
+                {showForm}
             </div>
         );
     }
 }
-
-//render the same form (once)

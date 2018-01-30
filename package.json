@@ -40,6 +40,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15.4": "^1.0.5",
     "file-loader": "^1.1.6",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "react-addons-test-utils": "15.4",
     "react-test-renderer": "^16.2.0",
@@ -56,6 +57,9 @@
     ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
     }
   }
 }
