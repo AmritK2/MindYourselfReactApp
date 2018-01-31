@@ -7,7 +7,7 @@ import { MYOBLogo } from '@myob/myob-widgets';
 import { Checkbox } from '@myob/myob-widgets';
 
 import LevelOne from './LevelOne.jsx';
-import LevelTwoModal from './LevelTwoModal.jsx';
+import LevelTwo from './LevelTwo.jsx';
 
 export default class DashboardForLevels extends React.Component {
 
@@ -15,29 +15,29 @@ export default class DashboardForLevels extends React.Component {
         super(props);
         this.state = {
             showLevel1: false,
-            isLevel2ModalOpen: false
+            showLevel2: false
         };
         this.handleLevel1Click = this.handleLevel1Click.bind(this);
-        this.handleLevel2ModalClick = this.handleLevel2ModalClick.bind(this);
+        this.handleLevel2Click = this.handleLevel2Click.bind(this);
     }
 
     handleLevel1Click(event) {
         event.preventDefault();
-        this.setState({ ...this.setState, showLevel1: true});
+        this.setState({ ...this.setState, showLevel1: true, showLevel2: false});
     }
 
-    handleLevel2ModalClick(event) {
+    handleLevel2Click(event) {
         event.preventDefault();
-        this.setState({ ...this.setState, isLevel2ModalOpen: !this.state.isLevel2ModalOpen });
+        this.setState({ ...this.setState, showLevel2: true, showLevel1: true});
     }
 
 
     render() {
-        const modalOne = this.state.showLevel1 ? <div style={{ textAlign: 'center' }}>
+        const levelOne = this.state.showLevel1 ? <div style={{ textAlign: 'center' }}>
             <LevelOne/>
         </div> : "";
-        const modalTwo = this.state.isLevel2ModalOpen ? <div style={{ textAlign: 'center' }}>
-            <LevelTwoModal />
+        const levelTwo = this.state.showLevel2 ? <div style={{ textAlign: 'center' }}>
+            <LevelTwo />
         </div> : "";
 
 
@@ -48,9 +48,9 @@ export default class DashboardForLevels extends React.Component {
                 <div className="level1">
                     <Button className= "level1-button" type="secondary" onClick={this.handleLevel1Click}>Level 1</Button> </div>
                 <div className="level2">
-                    <Button type="secondary" onClick={this.handleLevel2ModalClick}>Level 2</Button> </div>
-                {modalOne}
-                {modalTwo}
+                    <Button type="secondary" onClick={this.handleLevel2Click}>Level 2</Button> </div>
+                {levelOne}
+                {levelTwo}
 
 
             </div>
