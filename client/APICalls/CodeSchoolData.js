@@ -1,9 +1,9 @@
 import "babel-core/register";
 import "babel-polyfill";
 
-const codeSchoolURL = username => `https://www.codeschool.com/users/${username}.json`;
+const codeSchoolURL = userInfo => `https://www.codeschool.com/users/${userInfo}.json`;
 export default function codeSchoolData(label, userInfo) {
-    fetch(codeSchoolURL(userInfo.codeSchoolUsername))
+   return fetch(codeSchoolURL(userInfo.codeSchoolUsername))
         .then(receivedResponse => {
             if (!receivedResponse.ok) {
                 throw Error("Request Failed")

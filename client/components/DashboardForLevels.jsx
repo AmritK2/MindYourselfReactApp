@@ -1,10 +1,10 @@
 import React from 'react';
 
 import "../index.css";
-import { Modal } from '@myob/myob-widgets';
-import { Button } from '@myob/myob-widgets';
-import { MYOBLogo } from '@myob/myob-widgets';
-import { Checkbox } from '@myob/myob-widgets';
+import {Modal} from '@myob/myob-widgets';
+import {Button} from '@myob/myob-widgets';
+import {MYOBLogo} from '@myob/myob-widgets';
+import {Checkbox} from '@myob/myob-widgets';
 
 import Levels from './Levels.jsx';
 import codeSchoolData from '../APICalls/CodeSchoolData.js';
@@ -17,31 +17,39 @@ export default class DashboardForLevels extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            levelOne:[
-                {   name: "Try Git",
+            levelOne: [
+                {
+                    name: "Try Git",
                     apiCallStatus: codeSchoolData
                 },
-                {   name: "Try C#",
+                {
+                    name: "Try C#",
                     apiCallStatus: codeSchoolData
                 },
-                {   name: "Must Have Completed 2 Code Wars",
+                {
+                    name: "Must Have Completed 2 Code Wars",
                     apiCallStatus: codeWarsData
                 },
-                {   name: "PaySlip Kata",
+                {
+                    name: "PaySlip",
                     apiCallStatus: getCodeReviewState
                 }
             ],
-            levelTwo:[
-                {   name: "Keeping It Classy With C#",
+            levelTwo: [
+                {
+                    name: "Keeping It Classy With C#",
                     apiCallStatus: codeSchoolData
                 },
-                {   name: "Git Real",
+                {
+                    name: "Git Real",
                     apiCallStatus: codeSchoolData
                 },
-                {   name: "JavaScript Road Trip Part 1",
+                {
+                    name: "JavaScript Road Trip Part 1",
                     apiCallStatus: codeSchoolData
                 },
-                {   name: "Must have completed 4 Code Wars",
+                {
+                    name: "Must have completed 4 Code Wars",
                     apiCallStatus: codeWarsData
                 }
             ],
@@ -51,40 +59,40 @@ export default class DashboardForLevels extends React.Component {
         };
         this.handleLevel1Click = this.handleLevel1Click.bind(this);
         this.handleLevel2Click = this.handleLevel2Click.bind(this);
-
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         const result = await getUserInfo();
         this.setState({userInfo: result});
     }
 
     handleLevel1Click(event) {
         event.preventDefault();
-        this.setState({ ...this.setState, showLevelOne: true});
+        this.setState({...this.setState, showLevelOne: true});
     }
 
     handleLevel2Click(event) {
         event.preventDefault();
-        this.setState({ ...this.setState, showLevelTwo: true});
+        this.setState({...this.setState, showLevelTwo: true});
     }
 
     render() {
-        const levelOne = this.state.showLevelOne ? <div style={{ textAlign: 'center' }}>
-            <Levels criteria = {this.state.levelOne}/>
+        const levelOne = this.state.showLevelOne ? <div style={{textAlign: 'center'}}>
+            <Levels userInfo={this.state.userInfo} criteria={this.state.levelOne}/>
         </div> : "";
-        const levelTwo = this.state.showLevelTwo ? <div style={{ textAlign: 'center' }}>
-            <Levels userInfo = {this.state.userInfo} criteria = {this.state.levelTwo}/>
+        const levelTwo = this.state.showLevelTwo ? <div style={{textAlign: 'center'}}>
+            <Levels userInfo={this.state.userInfo} criteria={this.state.levelTwo}/>
         </div> : "";
 
         return (
             <div>
-                <div className="logo-header"><MYOBLogo /></div>
-                <div className="dashBoard"> <h1> Dashboard </h1> </div>
+                <div className="logo-header"><MYOBLogo/></div>
+                <div className="dashBoard"><h1> Dashboard </h1></div>
                 <div className="level1">
-                    <Button className= "level1-button" type="secondary" onClick={this.handleLevel1Click}>Level 1</Button> </div>
+                    <Button className="level1-button" type="secondary" onClick={this.handleLevel1Click}>Level 1</Button>
+                </div>
                 <div className="level2">
-                    <Button type="secondary" onClick={this.handleLevel2Click}>Level 2</Button> </div>
+                    <Button type="secondary" onClick={this.handleLevel2Click}>Level 2</Button></div>
                 {levelOne}
                 {levelTwo}
             </div>
