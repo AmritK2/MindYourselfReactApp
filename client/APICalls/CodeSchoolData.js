@@ -2,7 +2,7 @@ import "babel-core/register";
 import "babel-polyfill";
 
 const codeSchoolURL = userInfo => `https://www.codeschool.com/users/${userInfo}.json`;
-export default function codeSchoolData(label, userInfo) {
+export default function codeSchoolData(course, userInfo) {
    return fetch(codeSchoolURL(userInfo.codeSchoolUsername))
         .then(receivedResponse => {
             if (!receivedResponse.ok) {
@@ -17,6 +17,6 @@ export default function codeSchoolData(label, userInfo) {
             });
         })
         .then(titles => {
-            return titles.includes(label);
+            return titles.includes(course.name);
         });
 }

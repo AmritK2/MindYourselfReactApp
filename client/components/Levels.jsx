@@ -7,7 +7,9 @@ export default class Levels extends React.Component{
 
     createCheckboxes = () => {
         return this.props.criteria.map( (criteria) => {
-            const checked = !!criteria.apiCallStatus(criteria.name, this.props.userInfo);
+            const checked = !!criteria.apiCallStatus(criteria, this.props.userInfo);
+            // console.log(checked);
+
             return <Checkbox
                 key={criteria.name}
                 name={criteria.name}

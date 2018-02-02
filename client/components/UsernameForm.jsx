@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {createUser} from "../APICalls/UserService";
+import {storeUserUsernames} from "../APICalls/UserService";
 
 export default class UsernameForm extends React.Component {
 
@@ -18,7 +18,7 @@ export default class UsernameForm extends React.Component {
 
 
     handleSubmit(e) {
-        createUser({
+        storeUserUsernames({
             codeSchoolUsername: this.state.codeSchoolUsername,
             codeWarsUsername: this.state.codeWarsUsername,
             gitHubUsername: this.state.gitHubUsername,
