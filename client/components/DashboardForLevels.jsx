@@ -19,7 +19,7 @@ export default class DashboardForLevels extends React.Component {
         this.state = {
             levelOne: [
                 {
-                    name: "asdfasdf",
+                    name: "Try Git",
                     apiCallStatus: codeSchoolData,
                     challengeCount: 0
                 },
