@@ -9,8 +9,9 @@ export default function getCodeReviewState(repoName, userInfo) {
             }
             return receivedResponse;
         })
-
-        .then(receivedData => receivedData.json())
+        .then(receivedData => {
+            return receivedData.json()
+        })
         .then(receivedData => {
             return receivedData.merged_by !== userInfo.gitHubUsername && receivedData.merged;
         })
