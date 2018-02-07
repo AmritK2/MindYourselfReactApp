@@ -20,7 +20,7 @@ export default class Levels extends React.Component {
                 result: await criteria.apiCallStatus(criteria, this.props.userInfo)
             };
         });
-        const criteriaWithResults = await Promise.all(promises);
+        const criteriaWithResults = await Promise.all(promises);D
         this.setState({criteriaWithResults: criteriaWithResults});
     }
 
@@ -28,10 +28,10 @@ export default class Levels extends React.Component {
         const createCheckboxes = this.state.criteriaWithResults.map((criteria) => {
             return <div key={criteria.name}>
                 <MuiThemeProvider>
-                    <RadioButtonGroup name="levels" defaultSelected = {criteria.result}>
+                    <RadioButtonGroup name="levels" valueSelected = {criteria.result}>
                         <RadioButton
                             label={criteria.name}
-                            style={styles.radioButton}J
+                            style={styles.radioButton}
                         />
                     </RadioButtonGroup>
                 </MuiThemeProvider>
