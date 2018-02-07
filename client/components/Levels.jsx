@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Checkbox as Checkbox} from '@myob/myob-widgets';
+// import {Checkbox as Checkbox} from '@myob/myob-widgets';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class Levels extends React.Component {
     constructor(props) {
@@ -10,6 +12,7 @@ export default class Levels extends React.Component {
             criteriaWithResults: []
         };
     }
+
     async componentDidMount() {
         const promises = this.props.criteria.map(async (criteria) => {
             return {
@@ -24,10 +27,14 @@ export default class Levels extends React.Component {
     render() {
         const createCheckboxes = this.state.criteriaWithResults.map((criteria) => {
             return <div key={criteria.name}>
-                <Checkbox
-                    name={criteria.name}
-                    label={criteria.name}
-                    checked={criteria.result}/>
+                <MuiThemeProvider>
+                    <RadioButtonGroup name="levels" defaultSelected = {criteria.result}>
+                        <RadioButton
+                            label={criteria.name}
+                            style={styles.radioButton}J
+                        />
+                    </RadioButtonGroup>
+                </MuiThemeProvider>
             </div>;
         });
         return (
@@ -37,6 +44,13 @@ export default class Levels extends React.Component {
         )
     }
 }
+
+const styles = {
+    radioButton:{
+        marginBottom:16,
+        marginLeft: 16
+    }
+};
 
 Levels.propTypes = {
     key: PropTypes.string,

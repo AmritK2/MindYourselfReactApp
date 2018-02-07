@@ -14,6 +14,10 @@ import {getUserUsernames} from "../APICalls/UserService";
 
 export default class DashboardForLevels extends React.Component {
 
+    state = {
+        stepIndex:0,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
