@@ -12,7 +12,6 @@ import DashboardForLevels from './DashboardForLevels.jsx';
 class App extends React.Component {
     render() {
         return (
-
             <BrowserRouter>
             <div> 
                 <Route exact path="/" component={Home}/>
