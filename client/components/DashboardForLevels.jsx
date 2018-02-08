@@ -1,23 +1,17 @@
 import React from 'react';
-
 import "../index.css";
-import {Modal} from '@myob/myob-widgets';
-import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
-import {Checkbox} from '@myob/myob-widgets';
-
 import Levels from './Levels.jsx';
 import codeSchoolData from '../APICalls/CodeSchoolData.js';
 import codeWarsData from '../APICalls/CodeWarsData.js';
 import getCodeReviewState from '../APICalls/GithubUserData.js';
 import {getUserUsernames} from "../APICalls/UserService";
+import {Step, Stepper, StepButton, StepContent} from 'material-ui/Stepper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class DashboardForLevels extends React.Component {
-
-    state = {
-        stepIndex:0,
-    };
-
     constructor(props) {
         super(props);
         this.state = {
@@ -136,7 +130,8 @@ export default class DashboardForLevels extends React.Component {
             showLevelThree: false,
             showLevelFour: false,
             showLevelFive: false,
-            userInfo: {}
+            userInfo: {},
+            stepIndex: 0
         };
         this.handleLevel1Click = this.handleLevel1Click.bind(this);
         this.handleLevel2Click = this.handleLevel2Click.bind(this);
@@ -152,27 +147,68 @@ export default class DashboardForLevels extends React.Component {
 
     handleLevel1Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelOne: true, showLevelTwo: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
+        this.setState({...this.setState, stepIndex: 0, showLevelOne: true, showLevelTwo: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel2Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelTwo: true, showLevelOne: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
+        this.setState({...this.setState, stepIndex: 1, showLevelTwo: true, showLevelOne: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel3Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelThree: true, showLevelOne: false, showLevelTwo: false, showLevelFour: false, showLevelFive: false});
+        this.setState({...this.setState, stepIndex: 2, showLevelThree: true, showLevelOne: false, showLevelTwo: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel4Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelFour: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFive: false});
+        this.setState({...this.setState, stepIndex: 3, showLevelFour: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFive: false});
     }
 
     handleLevel5Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelFive: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFour: false});
+        this.setState({...this.setState, stepIndex: 4, showLevelFive: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFour: false});
+    }
+
+    state = {
+        stepIndex: 0,
+    };
+
+    handleNext = () => {
+        const {stepIndex} = this.state;
+        if (stepIndex < 2) {
+            this.setState({stepIndex: stepIndex + 1});
+        }
+    };
+
+    handlePrev = () => {
+        const {stepIndex} = this.state;
+        if (stepIndex > 0) {
+            this.setState({stepIndex: stepIndex - 1});
+        }
+    };
+
+    renderStepActions(step) {
+        return (
+            <div style={{margin: '12px 0'}}>
+                <RaisedButton
+                    label="Next"
+                    disableTouchRipple={true}
+                    disableFocusRipple={true}
+                    primary={true}
+                    onClick={this.handleNext}
+                    style={{marginRight: 12}}
+                />
+                {step > 0 && (
+                    <FlatButton
+                        label="Back"
+                        disableTouchRipple={true}
+                        disableFocusRipple={true}
+                        onClick={this.handlePrev}
+                    />
+                )}
+            </div>
+        );
     }
 
     render() {
@@ -195,22 +231,65 @@ export default class DashboardForLevels extends React.Component {
         return (
             <div>
                 <div className="logo-header"><MYOBLogo/></div>
-                <div className="dashBoard"><h1> Dashboard </h1></div>
-                <div className="level1">
-                    <Button className="level1-button" type="primary" onClick={this.handleLevel1Click}>Level 1</Button></div>
-                <div className="level2">
-                    <Button type="primary" onClick={this.handleLevel2Click}>Level 2</Button></div>
-                <div className="level3">
-                    <Button type="primary" onClick={this.handleLevel3Click}>Level 3</Button></div>
-                <div className="level4">
-                    <Button type="primary" onClick={this.handleLevel4Click}>Level 4</Button></div>
-                <div className="level5">
-                    <Button type="primary" onClick={this.handleLevel5Click}>Level 5</Button></div>
-                {levelOne}
-                {levelTwo}
-                {levelThree}
-                {levelFour}
-                {levelFive}
+                <div style={{maxWidth: 380, maxHeight: 400, margin: 'auto'}}>
+                    <h1>
+                        Dashboard
+                    </h1>
+                    <MuiThemeProvider>
+                        <Stepper activeStep={this.stepIndex} linear={false} orientation="vertical">
+                            <Step>
+                                <StepButton onClick={this.handleLevel1Click}>
+                                    Level One
+                                </StepButton>
+                                <StepContent>
+                                    {/*{levelOne}*/}
+                                    <p>Working?</p>
+                                    {this.renderStepActions(0)}
+                                </StepContent>
+                            </Step>
+                            <Step>
+                                <StepButton onClick={this.handleLevel2Click}>
+                                    Level Two
+                                </StepButton>
+                                <StepContent>
+                                    {/*{levelTwo}*/}
+                                    <p>Working?</p>
+                                    {this.renderStepActions(1)}
+                                </StepContent>
+                            </Step>
+                            <Step>
+                                <StepButton onClick={this.handleLevel3Click}>
+                                    Level Three
+                                </StepButton>
+                                <StepContent>
+                                    {/*{levelThree}*/}
+                                    <p>Working?</p>
+                                    {this.renderStepActions(2)}
+                                </StepContent>
+                            </Step>
+                            <Step>
+                                <StepButton onClick={this.handleLevel4Click}>
+                                    Level Four
+                                </StepButton>
+                                <StepContent>
+                                    {/*{levelFour}*/}
+                                    <p>Working?</p>
+                                    {this.renderStepActions(3)}
+                                </StepContent>
+                            </Step>
+                            <Step>
+                                <StepButton onClick={this.handleLevel5Click}>
+                                    Level Five
+                                </StepButton>
+                                <StepContent>
+                                    {/*{levelFive}*/}
+                                    <p>Working?</p>
+                                    {this.renderStepActions(4)}
+                                </StepContent>
+                            </Step>
+                        </Stepper>
+                    </MuiThemeProvider>
+                </div>
             </div>
         )
     }
