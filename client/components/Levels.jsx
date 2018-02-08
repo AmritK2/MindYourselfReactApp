@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Checkbox as Checkbox} from '@myob/myob-widgets';
+import {Step, Stepper, StepContent} from 'material-ui/Stepper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class Levels extends React.Component {
     constructor(props) {
@@ -24,12 +25,16 @@ export default class Levels extends React.Component {
 
     render() {
         const createCheckboxes = this.state.criteriaWithResults.map((criteria) => {
-            return <div key={criteria.name}>
-                <Checkbox
-                    name={criteria.name}
-                    label={criteria.name}
-                    checked={criteria.result}/>
-                </div>;
+            return<MuiThemeProvider> <div key={criteria.name}>
+                    <Stepper orientation="vertical">
+                        <Step completed={criteria.result}>
+                            <StepContent>
+                                {criteria.name}
+                            </StepContent>
+                        </Step>
+                    </Stepper>
+            </div>
+            </MuiThemeProvider>;
         });
         return (
             <div>
