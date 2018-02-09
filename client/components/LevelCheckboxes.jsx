@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {Checkbox as Checkbox} from '@myob/myob-widgets';
 
-export default class Levels extends React.Component {
+export default class LevelCheckboxes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +38,7 @@ export default class Levels extends React.Component {
     }
 }
 
-Levels.propTypes = {
+LevelCheckboxes.propTypes = {
     key: PropTypes.string,
     name: PropTypes.string,
     label: PropTypes.string,

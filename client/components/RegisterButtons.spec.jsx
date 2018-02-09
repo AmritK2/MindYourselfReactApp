@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import RegisterButtons from './RegisterButtons.jsx';
+import RegisterButtons from './Intern&GradPackOption.jsx';
 
 describe('Register Buttons Component', () => {
     const fakeEvent = {preventDefault: jest.fn()};

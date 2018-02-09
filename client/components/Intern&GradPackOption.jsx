@@ -4,7 +4,7 @@ import {MYOBLogo} from '@myob/myob-widgets';
 import "../index.css";
 import UsernameForm from './UsernameForm.jsx';
 
-export default class RegisterButtons extends React.Component{
+export default class InternAndGradPackOption extends React.Component{
    
     constructor(props) {
         super(props);
