@@ -5,11 +5,9 @@ import {Modal} from '@myob/myob-widgets';
 import {Button} from '@myob/myob-widgets';
 import {MYOBLogo} from '@myob/myob-widgets';
 import {Checkbox} from '@myob/myob-widgets';
+import {levels} from './LevelsCriteria.js';
 
 import LevelCheckboxes from './LevelCheckboxes.jsx';
-// import codeSchoolData from '../APICalls/CodeSchoolData.js';
-// import codeWarsData from '../APICalls/CodeWarsData.js';
-// import getCodeReviewState from '../APICalls/GithubUserData.js';
 import {getUserUsernames} from '../APICalls/UserService';
 
 export default class DashboardForLevels extends React.Component {
@@ -17,116 +15,6 @@ export default class DashboardForLevels extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // levelOne: [
-            //     {
-            //         name: "Try Git",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Try C#",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Must Have Completed 2 Code Wars",
-            //         apiCallStatus: codeWarsData,
-            //         challengeCount: 2
-            //     },
-            //     {
-            //         name: "PaySlip",
-            //         apiCallStatus: getCodeReviewState,
-            //         challengeCount: 0
-            //     }
-            // ],
-            // levelTwo: [
-            //     {
-            //         name: "Keeping It Classy With C#",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Git Real",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "JavaScript Road Trip Part 1",
-            //         challengeCount: 0,
-            //         apiCallStatus: codeSchoolData
-            //     },
-            //     {
-            //         name: "Must have completed 4 Code Wars",
-            //         apiCallStatus: codeWarsData,
-            //         challengeCount: 4
-            //     }
-            // ],
-            // levelThree: [
-            //     {
-            //         name: "Mastering Github Course",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "StringCalculatorKata",
-            //         apiCallStatus: getCodeReviewState,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "JavaScript Road Trip Part 2",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Must have completed 6 Code Wars",
-            //         apiCallStatus: codeWarsData,
-            //         challengeCount: 6
-            //     }
-            // ],
-            // levelFour: [
-            //     {
-            //         name: "Powering Up With React",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "ConwaysGame",
-            //         apiCallStatus: getCodeReviewState,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "JavaScript Road Trip Part 2",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Must have completed 8 Code Wars",
-            //         apiCallStatus: codeWarsData,
-            //         challengeCount: 8
-            //     }
-            // ],
-            // levelFive: [
-            //     {
-            //         name: "Try JQuery",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "TicTacToe",
-            //         apiCallStatus: getCodeReviewState,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "ES2015: The Shape of JavaScript to Come",
-            //         apiCallStatus: codeSchoolData,
-            //         challengeCount: 0
-            //     },
-            //     {
-            //         name: "Must have completed 10 Code Wars",
-            //         apiCallStatus: codeWarsData,
-            //         challengeCount: 10
-            //     }
-            // ],
             showLevelOne: false,
             showLevelTwo: false,
             showLevelThree: false,
@@ -147,46 +35,45 @@ export default class DashboardForLevels extends React.Component {
     }
 
     handleLevel1Click(event) {
-        event.preventDefault();
-        this.setState({...this.setState, showLevelOne: true, showLevelTwo: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
+        event.preventDefault(); 
+        this.setState({...this.state, showLevelOne: true, showLevelTwo: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel2Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelTwo: true, showLevelOne: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
+        this.setState({...this.state, showLevelTwo: true, showLevelOne: false, showLevelThree: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel3Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelThree: true, showLevelOne: false, showLevelTwo: false, showLevelFour: false, showLevelFive: false});
+        this.setState({...this.state, showLevelThree: true, showLevelOne: false, showLevelTwo: false, showLevelFour: false, showLevelFive: false});
     }
 
     handleLevel4Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelFour: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFive: false});
+        this.setState({...this.state, showLevelFour: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFive: false});
     }
 
     handleLevel5Click(event) {
         event.preventDefault();
-        this.setState({...this.setState, showLevelFive: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFour: false});
+        this.setState({...this.state, showLevelFive: true, showLevelOne: false, showLevelTwo: false, showLevelThree: false, showLevelFour: false});
     }
 
     render() {
-
         const levelOne = this.state.showLevelOne ? <div style={{textAlign: 'center'}}>
-            <LevelCheckboxes userInfo={this.state.userInfo} criteria={this.props.levelOne}/>
+            <LevelCheckboxes userInfo={this.state.userInfo} criteria={levels.levelOne}/>
         </div> : "";
         const levelTwo = this.state.showLevelTwo ? <div style={{textAlign: 'center'}}>
-            <LevelCheckboxes userInfo={this.state.userInfo} criteria={this.props.levelTwo}/>
+            <LevelCheckboxes userInfo={this.state.userInfo} criteria={levels.levelTwo}/>
         </div> : "";
         const levelThree = this.state.showLevelThree ? <div style={{textAlign: 'center'}}>
-            <LevelCheckboxes userInfo={this.state.userInfo} criteria={this.props.levelThree}/>
+            <LevelCheckboxes userInfo={this.state.userInfo} criteria={levels.levelThree}/>
         </div> : "";
         const levelFour = this.state.showLevelFour ? <div style={{textAlign: 'center'}}>
-            <LevelCheckboxes userInfo={this.state.userInfo} criteria={this.props.levelFour}/>
+            <LevelCheckboxes userInfo={this.state.userInfo} criteria={levels.levelFour}/>
         </div> : "";
         const levelFive = this.state.showLevelFive ? <div style={{textAlign: 'center'}}>
-            <LevelCheckboxes userInfo={this.state.userInfo} criteria={this.props.levelFive}/>
+            <LevelCheckboxes userInfo={this.state.userInfo} criteria={levels.levelFive}/>
         </div> : "";
 
         return (

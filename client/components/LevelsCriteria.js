@@ -3,15 +3,6 @@ import getCodeReviewState from "../APICalls/GithubUserData";
 import codeWarsData from "../APICalls/CodeWarsData";
 import codeSchoolData from "../APICalls/CodeSchoolData";
 
-import DashboardForLevels from "./DashboardForLevels.jsx";
-
-class LevelsCriteria extends React.Component{
-    render() {
-        return (
-           <DashboardForLevels levelcriteria = {levels}/>
-        )
-    }
-}
 
 const levels = {
     levelOne: [
@@ -125,3 +116,6 @@ const levels = {
         }
     ]
 };
+export {levels};
+
+
